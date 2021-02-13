@@ -13,15 +13,7 @@ What I'm stuck on: creating my routes and models
 */
 
 import React, { useState } from 'react';
-
-const rubricModel = {
-	3: {
-		FE: ['coding3', 'coding3', 'FETech3', 'FETech3', 'culture3'],
-		BE: ['coding3', 'coding3', 'coding3', 'coding3', 'culture3']
-	}
-};
-
-// console.log(rubricModel[3].BE)
+import rubricModel from '../../models/rubricModel';
 
 const Question = {
 	coding3: [
@@ -72,12 +64,11 @@ export default function SlateCreator(props) {
 
 	return (
 		<div>
-			<div>
+			<ul>
 				{newSlate.map(item => {
-					return <h3>{item}</h3>;
+					return <li>{item}</li>;
 				})}
-			</div>
-			<h1>Map newSlate here</h1>
+			</ul>
 		</div>
 	);
 }

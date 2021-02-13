@@ -16,7 +16,6 @@ export default function Form({ onFormSubmit = f => f }) {
 				</label>
 				<input type="submit" value={'Make a Slate'} />
 			</form>
-			{/*<SlateCreator level="3" domain="FE" />*/}
 		</>
 	);
 }
