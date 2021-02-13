@@ -1,0 +1,86 @@
+/*
+I made my vanilla JS work here. I need to create an API to fetch questions from
+Mongo after a form submit on the index page. Then I need to save a unique interview
+slate and render the slate component with a unique endpoint.
+
+I'm confused about the API. I don't think I need a schema just to fetch my
+mongo question database. I definitely need to make a model and schema to save
+the slate returned.
+
+I have to create routes for my models.
+
+What I'm stuck on: creating my routes and models
+*/
+
+import React, { useState } from 'react';
+
+const rubricModel = {
+	3: {
+		FE: ['coding3', 'coding3', 'FETech3', 'FETech3', 'culture3'],
+		BE: ['coding3', 'coding3', 'coding3', 'coding3', 'culture3']
+	}
+};
+
+// console.log(rubricModel[3].BE)
+
+const Question = {
+	coding3: [
+		`Here's an L3 question A`,
+		`Here's an L3 question B`,
+		`Here's an L3 question C`,
+		`Here's an L3 question D`
+	],
+	FETech3: [
+		'FE Tech Q A',
+		'FE Tech Q B',
+		'FE Tech Q C',
+		'FE Tech Q D',
+		'FE Tech Q E'
+	],
+	culture3: [
+		`This is a culture add question A`,
+		`This is a culture add question B`
+	]
+};
+
+export default function SlateCreator(props) {
+	const slateMap = rubricModel[props.level][props.domain];
+	// console.log('slatemap is:' + slateMap);
+
+	let num = 0;
+	const usedQuestion = [];
+
+	const newSlate = slateMap.map(item => {
+		//This is a recursive callback to make sure each question is unique for this slate:
+		const getNum = () => {
+			num = Math.floor(Math.random() * Question[item].length);
+			const uniqueItem = item + num;
+			if (usedQuestion.indexOf(uniqueItem) >= 0) {
+				console.log(`caught duplicate ${item + num}`);
+				getNum();
+			} else {
+				usedQuestion.push(uniqueItem);
+			}
+		};
+
+		getNum();
+
+		return Question[item][num];
+	});
+
+	console.log(`this is the new slate: ${newSlate}`);
+
+	return (
+		<div>
+			<div>
+				{newSlate.map(item => {
+					return <h3>{item}</h3>;
+				})}
+			</div>
+			<h1>Map newSlate here</h1>
+		</div>
+	);
+}
+
+// for testing:
+// SlateCreator(3, 'FE');
