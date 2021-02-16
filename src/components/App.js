@@ -35,14 +35,36 @@ export default function App(props) {
 	return (
 		// <OurContext.Provider value={slate}>
 		<div className="Page-wrapper">
-			<form onSubmit={handleSubmit}>
-				<label>
-					Level: <input type="number" ref={refLevel} />
-				</label>
-				<label>
-					Domain: <input type="text" ref={refDomain} />
-				</label>
-				<input type="submit" value={'Make a Slate'} />
+			<form className="form-control" onSubmit={handleSubmit}>
+				<select
+					className="form-select"
+					aria-label="Default select example"
+					ref={refLevel}
+				>
+					<option selected>Experience Level</option>
+					<option value="3">Level 3 (Jr SWE)</option>
+					<option value="4">Level 4 (Mid SWE)</option>
+					<option value="5">Level 5 (Sr SWE)</option>
+				</select>
+
+				<p>Domain</p>
+
+				<select
+					className="form-select"
+					aria-label="Default select example"
+					ref={refDomain}
+				>
+					<option selected>SWE Domain</option>
+					<option value="FE">Frontend</option>
+					<option value="BE">Backend</option>
+					<option value="Infra">Infra</option>
+				</select>
+
+				<input
+					className="btn btn-outline-dark"
+					type="submit"
+					value={'Make a Slate'}
+				/>
 			</form>
 			{domain && <SlateCreator level={level} domain={domain} />}
 		</div>

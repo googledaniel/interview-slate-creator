@@ -63,13 +63,20 @@ export default function SlateCreator(props) {
 	console.log(`this is the new slate: ${newSlate}`);
 
 	return (
-		<div>
-			<ul>
-				{newSlate.map(item => {
-					return <li>{item}</li>;
-				})}
-			</ul>
-		</div>
+		<ul>
+			{newSlate.map((item, index) => {
+				return (
+					<div className="card">
+						<div className="card-header">Interview {index + 1}</div>
+						<div className="card-body">
+							<blockquote className="blockquote mb-0">
+								<h4>{item}</h4>
+							</blockquote>
+						</div>
+					</div>
+				);
+			})}
+		</ul>
 	);
 }
 

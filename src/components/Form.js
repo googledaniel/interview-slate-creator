@@ -7,14 +7,14 @@ export default function Form({ onFormSubmit = f => f }) {
 
 	return (
 		<>
-			<form onSubmit={handleSubmit}>
+			<form onSubmit={handleSubmit} className="form">
 				<label>
 					Level: <input type="number" ref={level} />
 				</label>
-				<label>
+				<label className="form-label">
 					Domain: <input type="text" ref={domain} />
 				</label>
-				<input type="submit" value={'Make a Slate'} />
+				<input type="submit" value={'Make a Slate'} className="form-label" />
 			</form>
 		</>
 	);
