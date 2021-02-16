@@ -8,8 +8,12 @@ import Form from './Form';
 export default function App(props) {
 	const [rubric, setRubric] = useState({});
 	const [slate, setSlate] = useState(['Your questions will be added.']);
+	const refCandidateName = useRef();
+	const refCodingLanguage = useRef();
 	const refLevel = useRef();
 	const refDomain = useRef();
+	const [candidateName, setCandidateName] = useState('');
+	const [codingLanguage, setCodingLanguage] = useState('');
 	const [level, setLevel] = useState();
 	const [domain, setDomain] = useState('');
 
@@ -28,6 +32,8 @@ export default function App(props) {
 		e.preventDefault();
 		e.persist();
 
+		setCandidateName(refCandidateName.current.value);
+		setCodingLanguage(refCodingLanguage.current.value);
 		setLevel(refLevel.current.value);
 		setDomain(refDomain.current.value);
 	};
@@ -36,6 +42,17 @@ export default function App(props) {
 		// <OurContext.Provider value={slate}>
 		<div className="Page-wrapper">
 			<form className="form-control" onSubmit={handleSubmit}>
+				<label>
+					Candidate Name
+					<input type="text" ref={refCandidateName} />
+				</label>
+
+				<label>
+					Coding Language
+					<input type="text" ref={refCodingLanguage} />
+				</label>
+
+				<label>Level</label>
 				<select
 					className="form-select"
 					aria-label="Default select example"
@@ -47,7 +64,7 @@ export default function App(props) {
 					<option value="5">Level 5 (Sr SWE)</option>
 				</select>
 
-				<p>Domain</p>
+				<label>Domain</label>
 
 				<select
 					className="form-select"
@@ -66,7 +83,14 @@ export default function App(props) {
 					value={'Make a Slate'}
 				/>
 			</form>
-			{domain && <SlateCreator level={level} domain={domain} />}
+			{domain && (
+				<SlateCreator
+					candidateName={candidateName}
+					codingLanguage={codingLanguage}
+					level={level}
+					domain={domain}
+				/>
+			)}
 		</div>
 		// </OurContext.Provider>
 	);

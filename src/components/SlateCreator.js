@@ -1,51 +1,26 @@
 /*
-I made my vanilla JS work here. I need to create an API to fetch questions from
-Mongo after a form submit on the index page. Then I need to save a unique interview
-slate and render the slate component with a unique endpoint.
-
-I'm confused about the API. I don't think I need a schema just to fetch my
-mongo question database. I definitely need to make a model and schema to save
-the slate returned.
-
-I have to create routes for my models.
-
-What I'm stuck on: creating my routes and models
+I have to use hard coded questions in models for now. I need to refactor
+the newSlate function so it creates a query for the object in mongo
+and then fetch the data and set that data as a state in a useEffect.
 */
 
 import React, { useState } from 'react';
 import rubricModel from '../../models/rubricModel';
+import questionModel from '../../models/questionModel';
 
-const Question = {
-	coding3: [
-		`Here's an L3 question A`,
-		`Here's an L3 question B`,
-		`Here's an L3 question C`,
-		`Here's an L3 question D`
-	],
-	FETech3: [
-		'FE Tech Q A',
-		'FE Tech Q B',
-		'FE Tech Q C',
-		'FE Tech Q D',
-		'FE Tech Q E'
-	],
-	culture3: [
-		`This is a culture add question A`,
-		`This is a culture add question B`
-	]
-};
+const question = questionModel;
 
 export default function SlateCreator(props) {
 	const slateMap = rubricModel[props.level][props.domain];
-	// console.log('slatemap is:' + slateMap);
 
 	let num = 0;
 	const usedQuestion = [];
 
+	//instead of a return I could  setstate
 	const newSlate = slateMap.map(item => {
 		//This is a recursive callback to make sure each question is unique for this slate:
 		const getNum = () => {
-			num = Math.floor(Math.random() * Question[item].length);
+			num = Math.floor(Math.random() * question[item].length);
 			const uniqueItem = item + num;
 			if (usedQuestion.indexOf(uniqueItem) >= 0) {
 				console.log(`caught duplicate ${item + num}`);
@@ -57,26 +32,32 @@ export default function SlateCreator(props) {
 
 		getNum();
 
-		return Question[item][num];
+		return question[item][num];
 	});
 
 	console.log(`this is the new slate: ${newSlate}`);
 
 	return (
-		<ul>
-			{newSlate.map((item, index) => {
-				return (
-					<div className="card">
-						<div className="card-header">Interview {index + 1}</div>
-						<div className="card-body">
-							<blockquote className="blockquote mb-0">
-								<h4>{item}</h4>
-							</blockquote>
+		<div>
+			<h2>Candidate: {props.candidateName}</h2>
+			<h2>Coding Language: {props.codingLanguage}</h2>
+			<h2>Level: {props.level}</h2>
+			<h2>Domain: {props.domain}</h2>
+			<ul>
+				{newSlate.map((item, index) => {
+					return (
+						<div className="card">
+							<div className="card-header">Interview {index + 1}</div>
+							<div className="card-body">
+								<blockquote className="blockquote mb-0">
+									<h4>{item}</h4>
+								</blockquote>
+							</div>
 						</div>
-					</div>
-				);
-			})}
-		</ul>
+					);
+				})}
+			</ul>
+		</div>
 	);
 }
 
