@@ -4,9 +4,11 @@ const Slate = require('../models/slate');
 
 //Create a new slate after form submit
 
-slateRouter.post('/:id', async (req, res) => {
+
+
+slateRouter.post('/', async (req, res) => {
 	try {
-		const newSlate = await Slate(req.body)
+		const newSlate = await Slate.create(req.body)
 		res
 			.status(200)
 			.json(newSlate)

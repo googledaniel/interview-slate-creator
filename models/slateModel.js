@@ -3,9 +3,9 @@ const { Schema, model } = require('mongoose');
 const slateSchema = new Schema({
 	candidateName: String,
 	codingLanguage: String,
-	domain: Array,
+	domain: String,
 	level: Number,
-	questions: []
+	newSlate: []
 }, {
 	timestamps: true
 })

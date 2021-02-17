@@ -7,7 +7,7 @@ import Form from './Form';
 
 export default function App(props) {
 	const [rubric, setRubric] = useState({});
-	const [slate, setSlate] = useState(['Your questions will be added.']);
+	const [slate, setSlate] = useState(null);
 	const refCandidateName = useRef();
 	const refCodingLanguage = useRef();
 	const refLevel = useRef();
@@ -30,7 +30,30 @@ export default function App(props) {
 
 	const handleSubmit = async e => {
 		e.preventDefault();
-		e.persist();
+		const valCandidateName = refCandidateName.current.value;
+		const valCodingLanguage = refCodingLanguage.current.value;
+		const valLevel = refLevel.current.value;
+		const valDomain = refDomain.current.value;
+		try {
+			const response = await fetch('/api/slates', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({
+					candidateName: valCandidateName,
+					codingLanguage: valCodingLanguage,
+					level: valLevel,
+					domain: valDomain
+				})
+			});
+			const data = await response.json();
+			//Does this need to be an array [data]:
+			setSlate([data]);
+			console.log(`slate State on handle submit: ${slate}`);
+		} catch (error) {
+			console.log(error);
+		}
 
 		setCandidateName(refCandidateName.current.value);
 		setCodingLanguage(refCodingLanguage.current.value);
@@ -58,7 +81,7 @@ export default function App(props) {
 					aria-label="Default select example"
 					ref={refLevel}
 				>
-					<option selected>Experience Level</option>
+					<option defaultValue>Experience Level</option>
 					<option value="3">Level 3 (Jr SWE)</option>
 					<option value="4">Level 4 (Mid SWE)</option>
 					<option value="5">Level 5 (Sr SWE)</option>
@@ -71,7 +94,7 @@ export default function App(props) {
 					aria-label="Default select example"
 					ref={refDomain}
 				>
-					<option selected>SWE Domain</option>
+					<option defaultValue>SWE Domain</option>
 					<option value="FE">Frontend</option>
 					<option value="BE">Backend</option>
 					<option value="Infra">Infra</option>
@@ -83,7 +106,7 @@ export default function App(props) {
 					value={'Make a Slate'}
 				/>
 			</form>
-			{domain && (
+			{slate && (
 				<SlateCreator
 					candidateName={candidateName}
 					codingLanguage={codingLanguage}

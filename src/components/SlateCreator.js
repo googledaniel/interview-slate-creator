@@ -1,10 +1,20 @@
 /*
-I have to use hard coded questions in models for now. I need to refactor
+1. I have to use hard coded questions in models for now. I need to refactor
 the newSlate function so it creates a query for the object in mongo
 and then fetch the data and set that data as a state in a useEffect.
+
+2. I need help with CRUD. I can't remember how to send data
+to mongo and get the URI endpoint back with routes.
+I have create and read routes made plus the Schema
+but I don't remember how to get my form to submit the
+data and then render a unique page with the URI.
+
+3. How do I customize Bootstrap in Saas? I added the package
+and it's in package-json but it's still not letting
+me customize.
 */
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import rubricModel from '../../models/rubricModel';
 import questionModel from '../../models/questionModel';
 
