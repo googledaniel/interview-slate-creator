@@ -1,6 +1,7 @@
+const Slate = require('../models/slate');
 const express = require('express');
 const slateRouter = express.Router();
-const Slate = require('../models/slate');
+
 
 //Create a new slate after form submit
 

@@ -18,34 +18,34 @@ import React, { useState, useEffect } from 'react';
 import rubricModel from '../../models/rubricModel';
 import questionModel from '../../models/questionModel';
 
-const question = questionModel;
+// const question = questionModel;
 
 export default function SlateCreator(props) {
-	const slateMap = rubricModel[props.level][props.domain];
+	// const slateMap = rubricModel[props.level][props.domain];
+	//
+	// let num = 0;
+	// const usedQuestion = [];
+	//
+	// //instead of a return I could  setstate
+	// const newSlate = slateMap.map(item => {
+	// 	//This is a recursive callback to make sure each question is unique for this slate:
+	// 	const getNum = () => {
+	// 		num = Math.floor(Math.random() * question[item].length);
+	// 		const uniqueItem = item + num;
+	// 		if (usedQuestion.indexOf(uniqueItem) >= 0) {
+	// 			// console.log(`caught duplicate ${item + num}`);
+	// 			getNum();
+	// 		} else {
+	// 			usedQuestion.push(uniqueItem);
+	// 		}
+	// 	};
+	//
+	// 	getNum();
+	//
+	// 	return question[item][num];
+	// });
 
-	let num = 0;
-	const usedQuestion = [];
-
-	//instead of a return I could  setstate
-	const newSlate = slateMap.map(item => {
-		//This is a recursive callback to make sure each question is unique for this slate:
-		const getNum = () => {
-			num = Math.floor(Math.random() * question[item].length);
-			const uniqueItem = item + num;
-			if (usedQuestion.indexOf(uniqueItem) >= 0) {
-				console.log(`caught duplicate ${item + num}`);
-				getNum();
-			} else {
-				usedQuestion.push(uniqueItem);
-			}
-		};
-
-		getNum();
-
-		return question[item][num];
-	});
-
-	console.log(`this is the new slate: ${newSlate}`);
+	// console.log(`this is the new slate: ${newSlate}`);
 
 	return (
 		<div>
@@ -54,7 +54,7 @@ export default function SlateCreator(props) {
 			<h2>Level: {props.level}</h2>
 			<h2>Domain: {props.domain}</h2>
 			<ul>
-				{newSlate.map((item, index) => {
+				{props.interviews.map((item, index) => {
 					return (
 						<div className="card">
 							<div className="card-header">Interview {index + 1}</div>
