@@ -26,16 +26,15 @@ if (process.env.NODE_ENV !== 'development'){
 
 /* Controller Goes Here */
 app.use('/api/slates', require('./controllers/slates'))
-// app.use('/api/questions', require('./controllers/questions'));
 /* Controller Ends here */
 
 //LISTENER
 
 
-// for react router
-// app.get('*', (req, res) => {
-// 	res.sendFile(path.resolve(path.join(__dirname, 'public', 'index.html')))
-// })
+//for react router
+app.get('*', (req, res) => {
+	res.sendFile(path.resolve(path.join(__dirname, 'public', 'index.html')))
+})
 
 app.listen(PORT, () => {
 	console.log(`API Listening on port ${PORT}`);

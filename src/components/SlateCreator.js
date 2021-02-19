@@ -10,7 +10,7 @@ and it's in package-json but it's still not letting
 me customize.
 */
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 export default function SlateCreator(props) {
 	return (

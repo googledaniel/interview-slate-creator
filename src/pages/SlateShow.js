@@ -1,0 +1,26 @@
+import React, { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
+import SlateCreator from '../components/SlateCreator';
+
+export default function SlateShow(props) {
+	const [slate, setSlate] = useState();
+	console.log('slate show - pre useEffect');
+	useEffect(() => {
+		(async () => {
+			try {
+				const response = await fetch(`/api/slates/${props.match.params.id}`);
+				const data = await response.json();
+				setSlate(data);
+			} catch (error) {
+				console.error(error);
+			}
+		})();
+	}, [slate]);
+
+	return (
+		<>
+			{slate && <div>{slate && <SlateCreator slate={slate} />}</div>}
+			{!slate && <div>Slate not found</div>}
+		</>
+	);
+}

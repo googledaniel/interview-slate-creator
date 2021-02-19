@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 // import SlateCreator from './SlateCreator';
 //import rubricModel from '../models/rubricModel';
-import SlateCreator from './SlateCreator';
+import SlateCreator from '../components/SlateCreator';
 import OurContext from '../context';
-import Form from './Form';
+import Form from '../components/Form';
 import rubricModel from '../../models/rubricModel';
 import questionModel from '../../models/questionModel';
 
@@ -15,20 +15,6 @@ export default function App(props) {
 	const refCodingLanguage = useRef('');
 	const refLevel = useRef('');
 	const refDomain = useRef('');
-
-	//is this  how i update state and load slateCreator if the
-	//correct endpoint URI is called:
-	useEffect(() => {
-		(async () => {
-			try {
-				const response = await fetch('/api/slates/:id');
-				const data = await response.json();
-				setSlate(data);
-			} catch (error) {
-				console.error(error);
-			}
-		})();
-	}, []);
 
 	const handleSubmit = async e => {
 		e.preventDefault();

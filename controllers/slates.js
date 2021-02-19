@@ -34,7 +34,7 @@ slateRouter.post('/', async (req, res) => {
 slateRouter.get('/:id', async (req, res) => {
 	try {
 		const foundSlate = await Slate.findById(req.params.id)
-		// await foundSlate.execPopulate('slate')
+		await foundSlate.execPopulate('slate')
 		res
 			.status(200)
 			.json(foundSlate)
