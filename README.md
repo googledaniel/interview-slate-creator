@@ -28,4 +28,3 @@ I created an API with mongo to save the final slate and use a unique ID for that
 - My API was really difficult to make. I just didn't understand routes well and I needed over a week to figure it out.
 - My React Router is bugging out by not showing my other pages.
 - Bootstrap throws some container bugs that I don't understand yet. It's a new library for me and I need to keep learning more about it.
-- Heroku has an error I need to comb through. I had a similar error before so I think it'll be a small bug fix.
