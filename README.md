@@ -1,69 +1,31 @@
-# Big Poppa Code React Starter Kit
-This Starter Kit is being created for New Web Developers that want to get started with react
+# Interview Slate Creator
 
-Most people use a CLI Tool like Vue-Cli or Create React App and no idea what these things are doing
+This app helps engineering managers create technical interview slates for interviews. They can share the slate with their team and assign different interviews to each member.
 
-The goal of this is for it to be a tool that let's you learn JS at a new level because you have access to
-everything under the hood and no opinionated set up
+# Core Concepts
 
-I will base all my tutorials on this Starter Kit.
+This is based on interview science applied in Google. The form collects information on the level and domain for the candidate. It uses a rubric model to determine what mix of interviews are needed. For example: L3 Frontend will need:
+- 2 General Coding and Data Structure interviews
+- 2 Frontend Technology interviews (eg: React and CSS)
+- 1 Culture Add (behavioral)
 
-# Who Am I?
+After getting the rubric the function then accesses a model of questions to randomly get the right mix of questions (and not repeat any). It uses .map and recursion to create that mix.
 
-![arthurbernierjr.com](http://progressandfortune.com/smac_images/profile.jpg)
+I created an API with mongo to save the final slate and use a unique ID for that slate to be shared. Importantly, the questions are not looped through again. The whole slate needs to be statically saved to the database so no updates to the questions change it.
 
-I am Arthur Bernier Jr. I work as freelance fullstack web developer and attraction marketing consultant specializing in supporting e-commerce brands,
-subscription box sites, social activists, religious/non-profit leaders and creative entrepreneurs(i.e. barbers, artists, musicians, stylists, models and photographers).
-I have a passion for helping entrepreneurs reach their perfect audience and helping you communicate to that audience in a way that makes them know, like and trust you. I also am a Full-Time Instructor at General Assembly as well as a Software Engineer at Blavity Inc.
+# Technology Used
+- React and React Router to navigate.
+- Vanilla Javascript for checking the rubric and create the slate with the questions.
+- Express APIs and Mongo
+- Bootstrap
 
+# Wins
+- I really wanted to understand APIs better and make my own. It took nearly all my time on the project but I'm happy it finally works!
+- This app also happens to be a demo I will use in Google. Engineers want an update to QDroid in Google (which spits out a single question) to be more sophisticated and make sure engineers don't duplicate questions on our interviews.
+- The app was designed mobile first. It needs some work on sizing and style but it's certainly easier to do mobile first!
 
-# My Favorite Online Instructors
-
-[__Colt Steele__](https://www.youtube.com/channel/UCrqAGUPPMOdo0jfQ6grikZw)
-
-[__Brad Traversy__](https://www.youtube.com/channel/UC29ju8bIPH5as8OGnQzwJyA)
-
-[__Jose Santos Garcia__](https://www.youtube.com/channel/UC46wWUso9H5KPQcoL9iE3Ug)
-
-[__Stephen Grider__](https://www.youtube.com/channel/UCQCaS3atWyNHEy5PkDXdpNg/)
-
-## Steps
-
-**Install Gulp Globally**
-```bash
-npm i -g gulp-cli
-```
-
-**Start the dev server**
-```bash
-npm run dev
-```
-### or
-```bash
-yarn dev
-```
-
-**Start the dev server with proxy**
-```bash
-npm run proxy
-```
-
-**Build files for production**
-```bash
-yarn build
-```
-### or
-
-```bash
-npm run build
-```
-
-**Deploy for production script**
-```bash
-npm start
-```
-### or
-```bash
-yarn start
-```
-# interview-slate-creator
+# Challenges 
+- My API was really difficult to make. I just didn't understand routes well and I needed over a week to figure it out.
+- My React Router is bugging out by not showing my other pages.
+- Bootstrap throws some container bugs that I don't understand yet. It's a new library for me and I need to keep learning more about it.
+- Heroku has an error I need to comb through. I had a similar error before so I think it'll be a small bug fix.
