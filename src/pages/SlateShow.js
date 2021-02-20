@@ -15,11 +15,11 @@ export default function SlateShow(props) {
 				console.error(error);
 			}
 		})();
-	}, [slate]);
+	}, []);
 
 	return (
 		<>
-			{slate && <div>{slate && <SlateCreator slate={slate} />}</div>}
+			{slate && <SlateCreator slate={slate} />}
 			{!slate && <div>Slate not found</div>}
 		</>
 	);

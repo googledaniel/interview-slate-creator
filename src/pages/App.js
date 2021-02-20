@@ -57,59 +57,72 @@ export default function App(props) {
 				})
 			});
 			const data = await response.json();
-			setSlate(data);
+			await setSlate(data);
 		} catch (error) {
 			console.log(error);
 		}
 	};
 
 	return (
-		<div className="Page-wrapper">
-			{!slate && (
-				<form className="form-control" onSubmit={handleSubmit}>
-					<label>
-						Candidate Name
-						<input type="text" ref={refCandidateName} />
-					</label>
+		<div className="container-fluid">
+			<div className="jumbotron">
+				<h2 className="display-2">Interview Creator</h2>
+				<p className="lead">
+					A software engineering slate creator for hiring managers.
+				</p>
+			</div>
+			<div className="form-control">
+				{!slate && (
+					<form onSubmit={handleSubmit}>
+						<div className="form-group">
+							<label>Candidate Name</label>
+							<input type="text" ref={refCandidateName} />
+						</div>
 
-					<label>
-						Coding Language
-						<input type="text" ref={refCodingLanguage} />
-					</label>
+						<div className="form-group">
+							<label>Coding Language</label>
+							<input type="text" ref={refCodingLanguage} />
+						</div>
+						<div className="form-group">
+							<label>
+								Level
+								<select
+									className="form-select"
+									aria-label="Default select example"
+									ref={refLevel}
+								>
+									<option defaultValue>Experience Level</option>
+									<option value="3">Level 3 (Jr SWE)</option>
+									<option value="4">Level 4 (Mid SWE)</option>
+									<option value="5">Level 5 (Sr SWE)</option>
+								</select>
+							</label>
+						</div>
+						<div className="form-group">
+							<label>
+								Domain
+								<select
+									className="form-select"
+									aria-label="Default select example"
+									ref={refDomain}
+								>
+									<option defaultValue>SWE Domain</option>
+									<option value="FE">Frontend</option>
+									<option value="BE">Backend</option>
+									<option value="Infra">Infra</option>
+								</select>
+							</label>
+						</div>
 
-					<label>Level </label>
-					<select
-						className="form-select"
-						aria-label="Default select example"
-						ref={refLevel}
-					>
-						<option defaultValue>Experience Level</option>
-						<option value="3">Level 3 (Jr SWE)</option>
-						<option value="4">Level 4 (Mid SWE)</option>
-						<option value="5">Level 5 (Sr SWE)</option>
-					</select>
-
-					<label>Domain </label>
-
-					<select
-						className="form-select"
-						aria-label="Default select example"
-						ref={refDomain}
-					>
-						<option defaultValue>SWE Domain</option>
-						<option value="FE">Frontend</option>
-						<option value="BE">Backend</option>
-						<option value="Infra">Infra</option>
-					</select>
-
-					<input
-						className="btn btn-outline-dark"
-						type="submit"
-						value={'Make a Slate'}
-					/>
-				</form>
-			)}
-			{slate && <SlateCreator slate={slate} />}
+						<input
+							className="btn btn-outline-dark"
+							type="submit"
+							value={'Make a Slate'}
+						/>
+					</form>
+				)}
+			</div>
+			<div>{slate && <SlateCreator slate={slate} />}</div>
 		</div>
 		// </OurContext.Provider>
 	);

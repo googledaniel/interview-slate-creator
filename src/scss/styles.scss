@@ -1,98 +1,98 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700");
-@import "reset";
+//@import "reset";
 
-
-body {
-  display: flex;
-  justify-content: center;
-  //align-content: center;
-  line-height: 1;
-  background: white;
-  font-family: 'Roboto', sans-serif;
-}
-
-ul {
-  list-style: none;
-  .card {
-    border-radius: .1rem;
-    margin: 1rem;
-  }
-}
-
-blockquote,
-q {
-  quotes: none;
-}
-
-// Extra small devices (portrait phones, less than 576px)
-// No media query since this is the default in Bootstrap
-
-// Small devices (landscape phones, 576px and up)
-
-//@media (min-width: 576px) { ... }
 //
-//// Medium devices (tablets, 768px and up)
-//@media (min-width: 768px) { ... }
+//body {
+//  display: flex;
+//  justify-content: center;
+//  //align-content: center;
+//  line-height: 1;
+//  background: white;
+//  font-family: 'Roboto', sans-serif;
+//}
 //
-//// Large devices (desktops, 992px and up)
-//@media (min-width: 992px) { ... }
+//ul {
+//  list-style: none;
+//  .card {
+//    border-radius: .1rem;
+//    margin: 1rem;
+//  }
+//}
 //
-//// Extra large devices (large desktops, 1200px and up)
-//@media (min-width: 1200px) { ... }
-
-.Page-wrapper{
-  display: flex;
-  min-width: 90vw;
-  max-width: 500px;
-  flex-direction: column;
-
-  ul {
-
-    .card{
-      display: flex;
-      border-radius: .1rem;
-      margin: 1rem;
-    }
-
-  }
-
-  form {
-    display: flex;
-    flex-direction: column;
-    label {
-      display: flex;
-      justify-content: space-between;
-    }
-  }
-
-
-
-  //.App {
-  //  display: flex;
-  //  justify-content: space-around;
-  //  width: calc(100vw - 50px);
-
-    //.column {
-    //  width: 100%;
-    //  margin-left: 25px;
-    //  display: flex;
-    //  flex-direction: column;
-    //  //align-items: center;
-    //  .heading{
-    //    height: 30px;
-    //    display: flex;
-    //    justify-content: center;
-    //    align-items: center;
-    //    color: white;
-    //    border: 0.1px solid transparentize(black, .35);
-    //    width: 100%;
-    //  }
-    //}
-
-
-  }
-
-
+//blockquote,
+//q {
+//  quotes: none;
+//}
+//
+//// Extra small devices (portrait phones, less than 576px)
+//// No media query since this is the default in Bootstrap
+//
+//// Small devices (landscape phones, 576px and up)
+//
+////@media (min-width: 576px) { ... }
+////
+////// Medium devices (tablets, 768px and up)
+////@media (min-width: 768px) { ... }
+////
+////// Large devices (desktops, 992px and up)
+////@media (min-width: 992px) { ... }
+////
+////// Extra large devices (large desktops, 1200px and up)
+////@media (min-width: 1200px) { ... }
+//
+//.Page-wrapper{
+//  display: flex;
+//  min-width: 90vw;
+//  max-width: 500px;
+//  flex-direction: column;
+//
+//  ul {
+//
+//    .card{
+//      display: flex;
+//      border-radius: .1rem;
+//      margin: 1rem;
+//    }
+//
+//  }
+//
+//  form {
+//    display: flex;
+//    flex-direction: column;
+//    label {
+//      display: flex;
+//      justify-content: space-between;
+//    }
+//  }
+//
+//
+//
+//  //.App {
+//  //  display: flex;
+//  //  justify-content: space-around;
+//  //  width: calc(100vw - 50px);
+//
+//    //.column {
+//    //  width: 100%;
+//    //  margin-left: 25px;
+//    //  display: flex;
+//    //  flex-direction: column;
+//    //  //align-items: center;
+//    //  .heading{
+//    //    height: 30px;
+//    //    display: flex;
+//    //    justify-content: center;
+//    //    align-items: center;
+//    //    color: white;
+//    //    border: 0.1px solid transparentize(black, .35);
+//    //    width: 100%;
+//    //  }
+//    //}
+//
+//
+//  }
+//
+//
 
 
 

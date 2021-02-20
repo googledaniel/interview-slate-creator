@@ -7,7 +7,7 @@ const routes = [
 	{
 		Component: SlateShow,
 		key: 'SlateShow',
-		path: '/:id/slate'
+		path: '/:id'
 	},
 	{
 		Component: HowTo,
