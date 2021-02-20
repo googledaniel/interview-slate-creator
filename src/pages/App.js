@@ -76,12 +76,12 @@ export default function App(props) {
 					{!slate && (
 						<form onSubmit={handleSubmit}>
 							<div className="form-group">
-								<label>Candidate Name</label>
+								<label>Candidate Name </label>
 								<input type="text" ref={refCandidateName} />
 							</div>
 
 							<div className="form-group">
-								<label>Coding Language</label>
+								<label>Coding Language </label>
 								<input type="text" ref={refCodingLanguage} />
 							</div>
 							<div className="form-group">
