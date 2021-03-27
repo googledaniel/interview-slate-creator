@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import SlateCreator from '../components/SlateCreator';
-import Dashboard from '../components/Dashboard';
 
 export default function SlateShow(props) {
 	const [slate, setSlate] = useState();
@@ -20,7 +19,7 @@ export default function SlateShow(props) {
 
 	return (
 		<>
-			{slate && <Dashboard slate={slate} />}
+			{slate && <SlateCreator slate={slate} />}
 			{!slate && <div>Slate not found</div>}
 		</>
 	);

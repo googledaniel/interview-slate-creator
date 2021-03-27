@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import SlateCreator from '../components/SlateCreator';
 import OurContext from '../context';
 import Form from '../components/Form';
+import Dashboard from '../components/Dashboard';
 import rubricModel from '../../models/rubricModel';
 import questionModel from '../../models/questionModel';
 
@@ -123,7 +124,7 @@ export default function App(props) {
 						</form>
 					)}
 				</div>
-				<div>{slate && <SlateCreator slate={slate} />}</div>
+				<div>{slate && <Dashboard slate={slate} />}</div>
 			</div>
 		</>
 	);
