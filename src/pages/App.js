@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import SlateCreator from '../components/SlateCreator';
 import OurContext from '../context';
 import Form from '../components/Form';
-import Dashboard from '../components/Dashboard';
+import HmDashboard from '../components/hmDashboard';
 import rubricModel from '../../models/rubricModel';
 import questionModel from '../../models/questionModel';
 
@@ -39,8 +39,9 @@ export default function App(props) {
 			};
 
 			getNum();
-
+			//!! in order to save which type of question is being asked, I need to refactor this part:
 			return question[item][num];
+			// return ({question[item][num], slateMap[item][num]});
 		});
 
 		try {
@@ -124,7 +125,7 @@ export default function App(props) {
 						</form>
 					)}
 				</div>
-				<div>{slate && <Dashboard slate={slate} />}</div>
+				<div>{slate && <HmDashboard slate={slate} />}</div>
 			</div>
 		</>
 	);

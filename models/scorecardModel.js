@@ -5,8 +5,7 @@ const slateSchema = new Schema({
 	codingLanguage: String,
 	domain: String,
 	level: Number,
-	questions: [],
-
+	questions: []
 }, {
 	timestamps: true
 })

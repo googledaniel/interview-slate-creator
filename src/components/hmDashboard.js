@@ -7,7 +7,7 @@ for each individual slate for a candidate's interview day.
 test show page:
 http://localhost:3000/605f6fd1a51485760b10b777
  */
-export default function Dashboard(props) {
+export default function HmDashboard(props) {
 	return (
 		<div>
 			<h3>Candidate: {props.slate.candidateName}</h3>
