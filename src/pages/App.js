@@ -4,13 +4,14 @@ import React, { useState, useEffect, useRef } from 'react';
 import SlateCreator from '../components/SlateCreator';
 import OurContext from '../context';
 import SlateCreatorForm from '../components/SlateCreatorForm';
-import HmDashboard from '../components/hmDashboard';
+import HmDashboard from '../components/HmDashboard';
 import rubricModel from '../../models/rubricModel';
 import questionModel from '../../models/questionModel';
 
 const question = questionModel;
 
 export default function App(props) {
+	const [dash, setDash] = useState();
 	const [slate, setSlate] = useState();
 	const refCandidateName = useRef('');
 	const refCodingLanguage = useRef('');
@@ -125,7 +126,8 @@ export default function App(props) {
 						</form>
 					)}
 				</div>
-				<div>{slate && <HmDashboard slate={slate} />}</div>
+				{/*<div>{<hmDashboard />}</div>*/}
+				<div>{slate && <SlateCreator slate={slate} />}</div>
 			</div>
 		</>
 	);

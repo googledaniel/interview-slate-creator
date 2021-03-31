@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import SlateCreator from '../components/SlateCreator';
 import HmDashboard from '../components/HmDashboard';
 
-export default function SlateShow(props) {
+export default function DashShow(props) {
 	const [slate, setSlate] = useState();
 	console.log('slate show - pre useEffect');
 	useEffect(() => {

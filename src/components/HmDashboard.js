@@ -4,8 +4,8 @@ import React, { useEffect, useState } from 'react';
 This dash holds ALL interview slates for the HM to see. It will lead to SlateCreator
 for each individual slate for a candidate's interview day.
 
-test show page:
-http://localhost:3000/605f6fd1a51485760b10b777
+!This is very similar to SlateShow page
+
  */
 export default function HmDashboard(props) {
 	return (

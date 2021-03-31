@@ -8,7 +8,7 @@ export default function SlateCreator(props) {
 			<p>Level: {props.slate.level}</p>
 			<p>Domain: {props.slate.domain}</p>
 			<p>
-				<a href={`localhost3000/${props.slate._id}`}>Share Link</a>
+				<a href={`localhost:3000/${props.slate._id}`}>Share Link</a>
 			</p>
 
 			<ul className="justify-content-start">
@@ -17,7 +17,7 @@ export default function SlateCreator(props) {
 						<div className="card padding">
 							<div className="card-header">
 								{/*add the scorecard show page in the link below later:*/}
-								<a href={`localhost3000/}`}>Interview {index + 1}</a>
+								<a href={`localhost:3000/}`}>Interview {index + 1}</a>
 								[Interviewer Name] | [Rubric Category]
 							</div>
 							<div className="card-body">

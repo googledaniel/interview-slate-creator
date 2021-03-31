@@ -3,6 +3,7 @@ const express = require('express');
 const UserRouter = express.Router();
 
 
+
 UserRouter.post('/', async (req, res) => {
 	try {
 		const newSlate = await UserModel.create(req.body)
@@ -18,9 +19,9 @@ UserRouter.post('/', async (req, res) => {
 })
 
 //Read Dashboards - any user
-UserRouter.get('/:id', async (req, res) => {
+UserRouter.get('/', async (req, res) => {
 	try {
-		const foundSlate = await UserModel.findById(req.params.id)
+		const foundSlate = await UserModel.find(req.params.id)
 		res
 			.status(200)
 			.json(foundSlate)
