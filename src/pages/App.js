@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from 'react';
 //import rubricModel from '../models/rubricModel';
 import SlateCreator from '../components/SlateCreator';
 import OurContext from '../context';
-import Form from '../components/Form';
+import SlateCreatorForm from '../components/SlateCreatorForm';
 import HmDashboard from '../components/hmDashboard';
 import rubricModel from '../../models/rubricModel';
 import questionModel from '../../models/questionModel';

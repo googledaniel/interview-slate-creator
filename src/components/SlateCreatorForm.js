@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import SlateCreator from './SlateCreator';
 
-export default function Form({ onFormSubmit = f => f }) {
+export default function SlateCreatorForm({ onFormSubmit = f => f }) {
 	const level = useRef();
 	const domain = useRef();
 
