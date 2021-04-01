@@ -56,7 +56,8 @@ export default function App(props) {
 					codingLanguage: refCodingLanguage.current.value,
 					domain: refDomain.current.value,
 					level: refLevel.current.value,
-					questions: newSlate
+					questions: newSlate,
+					active: true
 				})
 			});
 			const data = await response.json();
@@ -126,7 +127,6 @@ export default function App(props) {
 						</form>
 					)}
 				</div>
-				{/*<div>{<hmDashboard />}</div>*/}
 				<div>{slate && <SlateCreator slate={slate} />}</div>
 			</div>
 		</>

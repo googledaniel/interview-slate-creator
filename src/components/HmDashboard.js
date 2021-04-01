@@ -10,16 +10,17 @@ for each individual slate for a candidate's interview day.
 export default function HmDashboard(props) {
 	return (
 		<div>
-			<h3>Candidate: {props.slate.candidateName}</h3>
-			<p>Coding Language: {props.slate.codingLanguage}</p>
-			<p>Level: {props.slate.level}</p>
-			<p>Domain: {props.slate.domain}</p>
-			<p>
-				<a href={`localhost3000/${props.slate._id}`}>Share Link</a>
-			</p>
+			<p>Attempting to map slate</p>
+			{/*// 	<h3>Candidate: {props.slate.candidateName}</h3>*/}
+			{/*// 	<p>Coding Language: {props.slate.codingLanguage}</p>*/}
+			{/*// 	<p>Level: {props.slate.level}</p>*/}
+			{/*// 	<p>Domain: {props.slate.domain}</p>*/}
+			{/*// 	<p>*/}
+			{/*// 		<a href={`localhost3000/${props.slate._id}`}>Share Link</a>*/}
+			{/*// 	</p>*/}
 
 			<ul className="justify-content-start">
-				{props.slate.questions.map((item, index) => {
+				{props.slates.map((item, index) => {
 					return (
 						<div className="card padding">
 							<div className="card-header">

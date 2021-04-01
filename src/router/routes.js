@@ -3,11 +3,12 @@ import App from '../pages/App';
 import SlateShow from '../pages/SlateShow';
 import Contact from '../pages/Contact';
 import HowTo from '../pages/HowTo';
+import DashShow from '../pages/DashShow';
 const routes = [
 	{
-		Component: SlateShow,
-		key: 'SlateShow',
-		path: '/:id'
+		Component: DashShow,
+		key: 'DashShow',
+		path: '/dashboard'
 	},
 	{
 		Component: HowTo,
@@ -18,6 +19,11 @@ const routes = [
 		Component: Contact,
 		key: 'Contact',
 		path: '/contact'
+	},
+	{
+		Component: SlateShow,
+		key: 'SlateShow',
+		path: '/:id'
 	},
 	{
 		Component: App,

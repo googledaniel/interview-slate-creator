@@ -8,7 +8,7 @@ export default function SlateCreator(props) {
 			<p>Level: {props.slate.level}</p>
 			<p>Domain: {props.slate.domain}</p>
 			<p>
-				<a href={`localhost:3000/${props.slate._id}`}>Share Link</a>
+				<a href={`http://localhost:3000/${props.slate._id}`}>Share Link</a>
 			</p>
 
 			<ul className="justify-content-start">
