@@ -1,13 +1,11 @@
-# Interview Slate Creator
+# Interview App
 
-This app helps engineering managers create technical interview slates for interviews. They can share the slate with their team and assign different interviews to each member.
+Creates interview slates for hiring managers, documents interview feedback in one
+dashboard and averages the recommendations from the interviewers.
 
 # Core Concepts
 
-This is based on interview science applied in Google. The form collects information on the level and domain for the candidate. It uses a rubric model to determine what mix of interviews are needed. For example: L3 Frontend will need:
-- 2 General Coding and Data Structure interviews
-- 2 Frontend Technology interviews (eg: React and CSS)
-- 1 Culture Add (behavioral)
+This is based on interview science applied in most big tech companies.
 
 After getting the rubric the function then accesses a model of questions to randomly get the right mix of questions (and not repeat any). It uses .map and recursion to create that mix.
 

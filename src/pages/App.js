@@ -7,6 +7,7 @@ import SlateCreatorForm from '../components/SlateCreatorForm';
 import HmDashboard from '../components/HmDashboard';
 import rubricModel from '../../models/rubricModel';
 import questionModel from '../../models/questionModel';
+import { TextField, FormControl, Radio } from '@material-ui/core';
 
 const question = questionModel;
 
@@ -69,6 +70,23 @@ export default function App(props) {
 
 	return (
 		<>
+			<FormControl>
+				<TextField
+					variant="filled"
+					label="Candidate Name"
+					ref={refCandidateName}
+				></TextField>
+				<TextField
+					variant="filled"
+					label="Coding Language"
+					ref={refCodingLanguage}
+				></TextField>
+				<FormLabel component="legend">Level</FormLabel>
+				<RadioGroup aria-label="level">
+					<FormControlLabel value="3" control={<Radio />} label="3" />
+				</RadioGroup>
+			</FormControl>
+
 			<div className="container-fluid ">
 				<div className="jumbotron">
 					<h4 className="display-4">Interview Creator</h4>
@@ -76,6 +94,7 @@ export default function App(props) {
 						A software engineering slate creator for hiring managers.
 					</p>
 				</div>
+
 				<div className="form-control border-0">
 					{!slate && (
 						<form onSubmit={handleSubmit}>

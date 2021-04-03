@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import SlateCreator from '../components/SlateCreator';
 import HmDashboard from '../components/hmDashboard';
-import Button from '@material-ui/core/Button';
 
 export default function SlateShow(props) {
 	const [slate, setSlate] = useState();

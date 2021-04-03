@@ -13,15 +13,30 @@ export default function DashShow(props) {
 				const response = await fetch(`/api/slates`);
 				const data = await response.json();
 				setSlates(data);
-			} catch (error) {
+			} catch (ersror) {
 				console.error(error);
 			}
 		})();
 	}, []);
 
+	// {slates && <div> </>}
+	// {!slates && <div>Dashboard not found</div>}
+
 	return (
 		<>
-			{slates && <HmDashboard slates={slates} />}
+			{slates && (
+				<ul className="justify-content-start">
+					{slates.candidateName.map(item => {
+						return (
+							<div className="card padding">
+								<div className="card-body">
+									<blockquote className="card-text">{item}</blockquote>
+								</div>
+							</div>
+						);
+					})}
+				</ul>
+			)}
 			{!slates && <div>Dashboard not found</div>}
 		</>
 	);
