@@ -24,8 +24,15 @@ if (process.env.NODE_ENV !== 'development'){
 	app.use(express.static('public'))
 }
 
-/* Controller Goes Here */
-app.use('/api/slates', require('./controllers/slates'))
+/* Define the controller routes here */
+app.use('/api/slates', require('./controllers/api/slates'))
+// app.use('/api/users', require('./controllers/api/users'))
+app.use('/api/dashboards', require('./controllers/api/dashboards'))
+// app.use('/api/auth', require('./controllers/api/auth'))
+// app.use('/api/profile', require('./controllers/api/profile'))
+// app.use('/api/posts', require('./controllers/api/posts'))
+
+
 /* Controller Ends here */
 
 //LISTENER

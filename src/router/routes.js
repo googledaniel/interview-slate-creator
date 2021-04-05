@@ -7,7 +7,7 @@ import DashShow from '../pages/DashShow';
 const routes = [
 	{
 		Component: DashShow,
-		key: 'DashShow',
+		key: 'Dashboard',
 		path: '/dashboard'
 	},
 	{
