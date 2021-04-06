@@ -11,11 +11,6 @@ const routes = [
 		path: '/dashboard'
 	},
 	{
-		Component: HowTo,
-		key: 'HowTo',
-		path: '/howto'
-	},
-	{
 		Component: Contact,
 		key: 'Contact',
 		path: '/contact'
