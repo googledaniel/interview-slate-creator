@@ -6,8 +6,24 @@ const slateSchema = new Schema({
 	codingLanguage: String,
 	domain: String,
 	level: Number,
-	questions: [],
-
+	questions: [{
+		question: String,
+		qSubDomain: String,
+		subLanguageBoolean: Boolean,
+		subLanguages: String,
+		interviewerName: String,
+		interviewerEmail: String,
+		lookFor: String,
+		started: Boolean,
+		completed: Boolean,
+		rawCode: String,
+		notes: String,
+		summary: String,
+		scores: [{
+			scoreType: String,
+			percentile: Number
+		}]
+	}],
 }, {
 	timestamps: true
 })

@@ -32,7 +32,7 @@ export default function SlateCreator(props) {
 								[Interviewer Name] | [Rubric Category]
 							</div>
 							<div className="card-body">
-								<blockquote className="card-text">{item}</blockquote>
+								<blockquote className="card-text">{item.question}</blockquote>
 							</div>
 						</div>
 					);

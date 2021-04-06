@@ -11,25 +11,17 @@ export default function HmDashboard(props) {
 	return (
 		<div>
 			<p>Attempting to map slate</p>
-			{/*// 	<h3>Candidate: {props.slate.candidateName}</h3>*/}
-			{/*// 	<p>Coding Language: {props.slate.codingLanguage}</p>*/}
-			{/*// 	<p>Level: {props.slate.level}</p>*/}
-			{/*// 	<p>Domain: {props.slate.domain}</p>*/}
-			{/*// 	<p>*/}
-			{/*// 		<a href={`localhost3000/${props.slate._id}`}>Share Link</a>*/}
-			{/*// 	</p>*/}
 
 			<ul className="justify-content-start">
-				{props.slates.map((item, index) => {
+				{props.slates.map(item => {
 					return (
 						<div className="card padding">
-							<div className="card-header">
-								{/*add the scorecard show page in the link below later:*/}
-								<a href={`localhost3000/}`}>Interview {index + 1}</a>
-								[Interviewer Name] | [Rubric Category]
-							</div>
 							<div className="card-body">
-								<blockquote className="card-text">{item}</blockquote>
+								<blockquote className="card-text">
+									<a href={`http://localhost:3000/${item._id}`}>
+										{item.candidateName}
+									</a>
+								</blockquote>
 							</div>
 						</div>
 					);

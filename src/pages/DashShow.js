@@ -4,16 +4,16 @@ import SlateCreator from '../components/SlateCreator';
 import HmDashboard from '../components/HmDashboard';
 
 export default function DashShow(props) {
-	const [slates, setSlates] = useState();
+	const [slates, setSlates] = useState([]);
 	console.log('HM Dash show - pre useEffect');
 	useEffect(() => {
 		(async () => {
 			try {
 				// const response = await fetch(`/api/interview-app-test/${props.match.params.id}`);
-				const response = await fetch(`/api/slates`);
+				const response = await fetch(`/api/dashboards`);
 				const data = await response.json();
 				setSlates(data);
-			} catch (ersror) {
+			} catch (error) {
 				console.error(error);
 			}
 		})();
@@ -21,22 +21,11 @@ export default function DashShow(props) {
 
 	// {slates && <div> </>}
 	// {!slates && <div>Dashboard not found</div>}
+	//<HmDashboard slates={slates} />
 
 	return (
 		<>
-			{slates && (
-				<ul className="justify-content-start">
-					{slates.candidateName.map(item => {
-						return (
-							<div className="card padding">
-								<div className="card-body">
-									<blockquote className="card-text">{item}</blockquote>
-								</div>
-							</div>
-						);
-					})}
-				</ul>
-			)}
+			{slates && <HmDashboard slates={slates} />}
 			{!slates && <div>Dashboard not found</div>}
 		</>
 	);
