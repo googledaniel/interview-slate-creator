@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -20,6 +20,7 @@ export default function HmDashboard(props) {
 		<Container maxWidth="md">
 			<React.Fragment>
 				{/*<Title>Interviews</Title>*/}
+				{/*<Box display="flex" justifyContent="center">*/}
 				<Table size="small">
 					<TableHead>
 						<TableRow>
@@ -33,9 +34,7 @@ export default function HmDashboard(props) {
 						{props.slates.map(item => (
 							<TableRow key={item.id}>
 								<TableCell>
-									<a href={`http://localhost:3000/${item._id}`}>
-										{item.candidateName}
-									</a>
+									<Link to={`/${item._id}`}>{item.candidateName}</Link>
 								</TableCell>
 								<TableCell>{item.level}</TableCell>
 								<TableCell>{item.domain}</TableCell>
@@ -44,6 +43,7 @@ export default function HmDashboard(props) {
 						))}
 					</TableBody>
 				</Table>
+				{/*</Box>*/}
 			</React.Fragment>
 		</Container>
 	);

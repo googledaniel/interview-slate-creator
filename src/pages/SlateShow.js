@@ -19,6 +19,7 @@ export default function SlateShow(props) {
 		})();
 	}, []);
 
+	//can I use react switch or something similar here or in slate creator to show each interview?
 	return (
 		<>
 			{slate && <SlateCreator slate={slate} />}

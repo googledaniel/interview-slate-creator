@@ -18,7 +18,7 @@ const router = express.Router();
 // 	}
 // })
 
-//Read Interview
+//Read Interview - how do I make it use the index for each :id?
 router.get('/:id', async (req, res) => {
 	try {
 		const foundSlate = await Slate.findById(req.params.id)
@@ -33,20 +33,6 @@ router.get('/:id', async (req, res) => {
 	}
 })
 
-//Read All Slates for Dash
-
-// router.get('/dashboard', async (req, res) => {
-// 	try {
-// 		const foundSlates = await Slate.find({})
-// 		res
-// 			.status(200)
-// 			.json(foundSlates)
-// 	} catch (error) {
-// 		res
-// 			.status(400)
-// 			.json(error)
-// 	}
-// })
 
 //Update
 

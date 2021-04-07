@@ -13,28 +13,28 @@ import SaveIcon from '@material-ui/icons/Save';
 import DeleteIcon from '@material-ui/icons/Delete';
 import DeveloperModeOutlinedIcon from '@material-ui/icons/DeveloperModeOutlined';
 import Container from '@material-ui/core/Typography';
-import { TextField, FormControl, Radio, Box } from '@material-ui/core';
-import TextField from '@material-ui/core/TextField';
 
-export default function SlateShow(props) {
+export default function InterviewShow(props) {
 	const [slate, setSlate] = useState();
 	console.log('slate show - pre useEffect');
-	useEffect(() => {
-		(async () => {
-			try {
-				const response = await fetch(`/api/slates/${props.match.params.id}`);
-				const data = await response.json();
-				setSlate(data);
-			} catch (error) {
-				console.error(error);
-			}
-		})();
-	}, []);
+	// useEffect(() => {
+	// 	(async () => {
+	// 		try {
+	// 			const response = await fetch(`/api/slates/${props.match.params.id}/`);
+	// 			const data = await response.json();
+	// 			setSlate(data);
+	// 		} catch (error) {
+	// 			console.error(error);
+	// 		}
+	// 	})();
+	// }, []);
 
+	// I think this doesn't need a page but rather a component which is shown in the SlateShow page.
 	return (
 		<>
-			{slate && <SlateCreator slate={slate} />}
-			{!slate && <div>Slate not found</div>}
+			<h2>No slates working</h2>
+			{slate && <div>Interview Found</div>}
+			{!slate && <div>Interview not found</div>}
 		</>
 	);
 }

@@ -24,7 +24,19 @@ import { TextField, FormControl, Radio, Box } from '@material-ui/core';
 
 const question = questionModel;
 
+const useStyles = makeStyles(() => ({
+	root: {
+		display: 'flex',
+		padding: '20px'
+		// alignItems: 'center',
+		// '& > * + *': {
+		// 	marginTop: '25px'
+		// }
+	}
+}));
+
 export default function App(props) {
+	const classes = useStyles();
 	const [slate, setSlate] = useState();
 	const [slates, setSlates] = useState();
 
@@ -42,10 +54,9 @@ export default function App(props) {
 		})();
 	}, []);
 
-
 	return (
 		<>
-			<div className="container-fluid">
+			<div className={classes.root}>
 				{/*<div className="jumbotron">*/}
 				{/*	<h4 className="display-4">Interview App</h4>*/}
 				{/*	<p className="lead">*/}
@@ -53,10 +64,10 @@ export default function App(props) {
 				{/*	</p>*/}
 				{/*</div>*/}
 
+				<div>{slates && <HmDashboard slates={slates} />}</div>
 				<div>
-					{slates && <HmDashboard slates={slates} />}
+					<SlateCreatorForm />
 				</div>
-				<div><SlateCreatorForm /></div>
 			</div>
 		</>
 	);

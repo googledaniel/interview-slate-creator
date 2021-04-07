@@ -3,6 +3,7 @@ import Button from '@material-ui/core/Button';
 import SaveIcon from '@material-ui/icons/Save';
 import DeleteIcon from '@material-ui/icons/Delete';
 import DeveloperModeOutlinedIcon from '@material-ui/icons/DeveloperModeOutlined';
+import { Link } from 'react-router-dom';
 
 export default function SlateCreator(props) {
 	return (
@@ -18,14 +19,20 @@ export default function SlateCreator(props) {
 			<ul className="justify-content-start">
 				{props.slate.questions.map((item, index) => {
 					return (
-						<div className="card padding">
+						<div key={index} className="card padding">
 							<div className="card-header">
 								{/*add the scorecard show page in the link below later:*/}
+								<Link
+									to={`/${props.slate._id}/${item._id}`}
+									slate={props.slate}
+								>
+									Conduct Interview
+								</Link>
 								<Button
 									startIcon={<DeveloperModeOutlinedIcon />}
 									variant="outlined"
 									size="small"
-									href={`/${index}`}
+									href={`${props.slate._id}/${item._id}`}
 								>
 									Conduct Interview
 								</Button>
