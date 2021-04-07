@@ -20,38 +20,43 @@ import Container from '@material-ui/core/Typography';
 
 import { TextField, FormControl, Radio, Box } from '@material-ui/core';
 
-//style created on https://codesandbox.io/s/1l8ej?file=/demo.js:27-382
-const useStyles = makeStyles(theme => ({
-	root: {
-		flexGrow: 1
-	},
-	menuButton: {
-		marginRight: theme.spacing(2)
-	},
-	title: {
-		flexGrow: 1
-	}
-}));
+//Material UI style created in sandbox templates: https://codesandbox.io/s/1l8ej?file=/demo.js:27-382
 
 const question = questionModel;
 
 export default function App(props) {
 	const [slate, setSlate] = useState();
+	const [slates, setSlates] = useState();
+
+	//UseEffect might solve the issue getting HmDashboard to load on start. Set slates on start
+
+	useEffect(() => {
+		(async () => {
+			try {
+				const response = await fetch('http://localhost:3000/api/dashboards');
+				const data = await response.json();
+				setSlates(data);
+			} catch (error) {
+				console.error(error);
+			}
+		})();
+	}, []);
+
 
 	return (
 		<>
-			<div className="container-fluid ">
-				<div className="jumbotron">
-					<h4 className="display-4">Interview App</h4>
-					<p className="lead">
-						A software engineering slate creator for hiring managers.
-					</p>
-				</div>
+			<div className="container-fluid">
+				{/*<div className="jumbotron">*/}
+				{/*	<h4 className="display-4">Interview App</h4>*/}
+				{/*	<p className="lead">*/}
+				{/*		A software engineering slate creator for hiring managers.*/}
+				{/*	</p>*/}
+				{/*</div>*/}
 
 				<div>
-					<SlateCreatorForm />
+					{slates && <HmDashboard slates={slates} />}
 				</div>
-				{slate && <SlateCreator slate={slate} />}
+				<div><SlateCreatorForm /></div>
 			</div>
 		</>
 	);

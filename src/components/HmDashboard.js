@@ -19,7 +19,7 @@ export default function HmDashboard(props) {
 	return (
 		<Container maxWidth="md">
 			<React.Fragment>
-				{/*<Title>Recent Orders</Title>*/}
+				{/*<Title>Interviews</Title>*/}
 				<Table size="small">
 					<TableHead>
 						<TableRow>
@@ -44,28 +44,7 @@ export default function HmDashboard(props) {
 						))}
 					</TableBody>
 				</Table>
-				{/*<div className={classes.seeMore}>*/}
-				{/*	<Link color="primary" href="#" onClick={preventDefault}>*/}
-				{/*		See more orders*/}
-				{/*	</Link>*/}
-				{/*</div>*/}
 			</React.Fragment>
-
-			{/*<ul>*/}
-			{/*	{props.slates.map(item => {*/}
-			{/*		return (*/}
-			{/*			<div>*/}
-			{/*				<div>*/}
-			{/*					<blockquote>*/}
-			{/*						<a href={`http://localhost:3000/${item._id}`}>*/}
-			{/*							{item.candidateName}*/}
-			{/*						</a>*/}
-			{/*					</blockquote>*/}
-			{/*				</div>*/}
-			{/*			</div>*/}
-			{/*		);*/}
-			{/*	})}*/}
-			{/*</ul>*/}
 		</Container>
 	);
 }

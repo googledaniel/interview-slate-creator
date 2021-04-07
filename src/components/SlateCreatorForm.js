@@ -68,10 +68,6 @@ export default function SlateCreatorForm(props) {
 
 	return (
 		<>
-			<FormControl>
-				<TextField variant={filled}></TextField>
-			</FormControl>
-
 			<div className="form-control border-0">
 				{!slate && (
 					<form onSubmit={handleSubmit}>
@@ -122,6 +118,7 @@ export default function SlateCreatorForm(props) {
 						/>
 					</form>
 				)}
+				<div>{slate && <SlateCreator slate={slate} />}</div>
 			</div>
 		</>
 	);
