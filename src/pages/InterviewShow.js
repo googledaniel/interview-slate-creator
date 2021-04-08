@@ -15,7 +15,7 @@ import DeveloperModeOutlinedIcon from '@material-ui/icons/DeveloperModeOutlined'
 import Container from '@material-ui/core/Typography';
 
 export default function InterviewShow(props) {
-	const [slate, setSlate] = useState();
+	// const [slate, setSlate] = useState();
 	console.log('slate show - pre useEffect');
 	// useEffect(() => {
 	// 	(async () => {
@@ -33,8 +33,8 @@ export default function InterviewShow(props) {
 	return (
 		<>
 			<h2>No slates working</h2>
-			{slate && <div>Interview Found</div>}
-			{!slate && <div>Interview not found</div>}
+			{/*{slate && <div>Interview Found</div>}*/}
+			{/*{!slate && <div>Interview not found</div>}*/}
 		</>
 	);
 }

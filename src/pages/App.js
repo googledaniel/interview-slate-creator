@@ -17,6 +17,8 @@ import SaveIcon from '@material-ui/icons/Save';
 import DeleteIcon from '@material-ui/icons/Delete';
 import DeveloperModeOutlinedIcon from '@material-ui/icons/DeveloperModeOutlined';
 import Container from '@material-ui/core/Typography';
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
 
 import { TextField, FormControl, Radio, Box } from '@material-ui/core';
 
@@ -27,11 +29,14 @@ const question = questionModel;
 const useStyles = makeStyles(() => ({
 	root: {
 		display: 'flex',
-		padding: '20px'
-		// alignItems: 'center',
-		// '& > * + *': {
-		// 	marginTop: '25px'
-		// }
+		flexDirection: 'column',
+		padding: '20px',
+		width: '-webkit-fill-available',
+		maxWidth: '900px',
+		alignItems: 'center',
+		'& > * + *': {
+			marginTop: '25px'
+		}
 	}
 }));
 
@@ -57,17 +62,17 @@ export default function App(props) {
 	return (
 		<>
 			<div className={classes.root}>
-				{/*<div className="jumbotron">*/}
-				{/*	<h4 className="display-4">Interview App</h4>*/}
-				{/*	<p className="lead">*/}
-				{/*		A software engineering slate creator for hiring managers.*/}
-				{/*	</p>*/}
-				{/*</div>*/}
+				<Grid container spacing={12}>
+					<Grid item xs={9}>
+						<Paper className={classes.paper}>
+							{slates && <HmDashboard slates={slates} />}
+						</Paper>
+					</Grid>
+				</Grid>
 
-				<div>{slates && <HmDashboard slates={slates} />}</div>
-				<div>
-					<SlateCreatorForm />
-				</div>
+				{/*<div>*/}
+				{/*	<SlateCreatorForm />*/}
+				{/*</div>*/}
 			</div>
 		</>
 	);

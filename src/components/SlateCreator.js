@@ -4,8 +4,24 @@ import SaveIcon from '@material-ui/icons/Save';
 import DeleteIcon from '@material-ui/icons/Delete';
 import DeveloperModeOutlinedIcon from '@material-ui/icons/DeveloperModeOutlined';
 import { Link } from 'react-router-dom';
+import { makeStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
+
+const useStyles = makeStyles(theme => ({
+	root: {
+		flexGrow: 1
+	},
+	paper: {
+		padding: theme.spacing(2),
+		textAlign: 'center',
+		color: theme.palette.text.secondary
+	}
+}));
 
 export default function SlateCreator(props) {
+	const classes = useStyles();
+
 	return (
 		<div>
 			<h3>Candidate: {props.slate.candidateName}</h3>
@@ -22,10 +38,7 @@ export default function SlateCreator(props) {
 						<div key={index} className="card padding">
 							<div className="card-header">
 								{/*add the scorecard show page in the link below later:*/}
-								<Link
-									to={`/${props.slate._id}/${item._id}`}
-									slate={props.slate}
-								>
+								<Link to={`/${props.slate._id}/${item._id}`}>
 									Conduct Interview
 								</Link>
 								<Button
