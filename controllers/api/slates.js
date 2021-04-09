@@ -3,7 +3,7 @@ const express = require('express');
 //remaned slateRouter to just router
 const router = express.Router();
 
-
+// Create Slate
 router.post('/', async (req, res) => {
 	try {
 		const newSlate = await Slate.create(req.body)
@@ -33,24 +33,37 @@ router.get('/:id', async (req, res) => {
 	}
 })
 
-//Read All Slates for Dash
+// Update Slate
 
-// router.get('/dashboard', async (req, res) => {
-// 	try {
-// 		const foundSlates = await Slate.find({})
-// 		res
-// 			.status(200)
-// 			.json(foundSlates)
-// 	} catch (error) {
-// 		res
-// 			.status(400)
-// 			.json(error)
-// 	}
-// })
+router.put('/:id', async (req, res) => {
+	try {
+		const foundSlate = await Slate.findByIdAndUpdate(req.params.id, req.body, { new: true })
+		// await foundSlate.execPopulate('slate')
+		res
+			.status(200)
+			.json(foundSlate)
+	} catch (error) {
+		res
+			.status(400)
+			.json(error)
+	}
+})
 
-//Update
 
-//Destroy
+//Destroy - only for admin to use later, not in main app.
 
+router.delete('/:id', async (req, res) => {
+	try {
+		const foundSlate = await Slate.findByIdAndDelete(req.params.id)
+		// await foundSlate.execPopulate('slate')
+		res
+			.status(200)
+			.json(foundSlate)
+	} catch (error) {
+		res
+			.status(400)
+			.json(error)
+	}
+})
 
 module.exports = router
