@@ -18,10 +18,9 @@ const useStyles = makeStyles(theme => ({
 	root: {
 		flexGrow: 1,
 		flexWrap: 'wrap',
-		flexDirection: 'column',
-		alignItems: 'center',
 		width: '100%',
-		maxWidth: '900px'
+		maxWidth: '900px',
+		margin: 'auto'
 	},
 	paper: {
 		padding: theme.spacing(2),
@@ -54,6 +53,15 @@ const useStyles = makeStyles(theme => ({
 	},
 	margin: {
 		height: theme.spacing(3)
+	},
+	cardContainer: {
+		display: 'flex',
+		flexDirection: 'column',
+		flex: 1,
+		width: '100%',
+		'& > * + *': {
+			marginTop: '20px'
+		}
 	}
 }));
 
@@ -79,99 +87,103 @@ export default function SlateCreator(props) {
 
 	return (
 		<div className={classes.root}>
-			<Card className={classes.root}>
-				<CardContent>
-					<Typography variant="h2" component="h2">
-						{slate.candidateName}
-					</Typography>
-					<Typography variant="h4" component="h4">
-						{slate.codingLanguage} | L{slate.level} | {slate.domain}
-					</Typography>
-				</CardContent>
-			</Card>
-			<div>
-				{slate.questions.map((item, index) => {
-					return (
-						<>
-							<Accordion>
-								<AccordionSummary
-									expandIcon={<ExpandMoreIcon />}
-									aria-controls="panel1a-content"
-									id="panel1a-header"
-								>
-									<Typography variant="h5" component="h5">
-										{index + 1} | Interviewer:{' '}
-										{!item.interviewerName && <> No interviewer assigned </>}
-										{item.interviewerName} | {item.qSubDomain}
-										{item.subLanguageBoolean && <>, {item.subLanguages}</>}
-									</Typography>
-								</AccordionSummary>
-								<AccordionDetails>
-									<Typography>
-										<div key={index}>
-											<div>
-												{showScoreCard !== item._id && (
-													<Card className={classes.root}>
-														<CardContent>
-															<Typography variant="h6" component="h6">
-																Main Question: {item.question}
-															</Typography>
-														</CardContent>
-														<CardContent>
-															<Typography variant="h6" component="h6">
-																What to look for: {item.lookFor}
-															</Typography>
-														</CardContent>
-														<CardContent>
-															<Typography variant="h6" component="h6">
-																Candidate's code: {item.rawCode}
-															</Typography>
-														</CardContent>
-														<CardContent>
-															<Typography variant="h6" component="h6">
-																Interviewer code notes: {item.notes}
-															</Typography>
-														</CardContent>
-														<CardContent>
-															<Typography variant="h6" component="h6">
-																Post-interview summary: {item.summary}
-															</Typography>
-														</CardContent>
-														<CardContent>
-															<Typography variant="h6" component="h6">
-																{item.scores[0].scoreType} Score:{' '}
-																{item.scores[0].percentile}%
-															</Typography>
-														</CardContent>
-														<CardContent>
-															<Button
-																startIcon={<DeveloperModeOutlinedIcon />}
-																variant="outlined"
-																size="small"
-																disabled={showScoreCard == item._id}
-																onClick={() => setShowScoreCard(item._id)}
-															>
-																Conduct Interview
-															</Button>
-														</CardContent>
-													</Card>
+			<div className={classes.cardContainer}>
+				<Card className={classes.root}>
+					<CardContent>
+						<Typography variant="h2" component="h2">
+							{slate.candidateName}
+						</Typography>
+						<Typography variant="h4" component="h4">
+							{slate.codingLanguage} | L{slate.level} | {slate.domain}
+						</Typography>
+					</CardContent>
+				</Card>
+				<div>
+					{slate.questions.map((item, index) => {
+						return (
+							<>
+								<Accordion>
+									<AccordionSummary
+										expandIcon={<ExpandMoreIcon />}
+										aria-controls="panel1a-content"
+										id="panel1a-header"
+									>
+										<Typography variant="h5" component="h5">
+											{index + 1} | Interviewer:{' '}
+											{!item.interviewerName && <> No interviewer assigned </>}
+											{item.interviewerName} | {item.qSubDomain}
+											{item.subLanguageBoolean && <>, {item.subLanguages}</>}
+										</Typography>
+									</AccordionSummary>
+									<AccordionDetails>
+										<Typography>
+											<div key={index}>
+												<div>
+													{showScoreCard !== item._id && (
+														<Card className={classes.root}>
+															<CardContent>
+																<Typography variant="h6" component="h6">
+																	Main Question: {item.question}
+																</Typography>
+															</CardContent>
+															<CardContent>
+																<Typography variant="h6" component="h6">
+																	What to look for: {item.lookFor}
+																</Typography>
+															</CardContent>
+															<CardContent>
+																<Typography variant="h6" component="h6">
+																	Candidate's code: {item.rawCode}
+																</Typography>
+															</CardContent>
+															<CardContent>
+																<Typography variant="h6" component="h6">
+																	Interviewer code notes: {item.notes}
+																</Typography>
+															</CardContent>
+															<CardContent>
+																<Typography variant="h6" component="h6">
+																	Post-interview summary: {item.summary}
+																</Typography>
+															</CardContent>
+															<CardContent>
+																<Typography variant="h6" component="h6">
+																	{item.scores[0].scoreType} Score:{' '}
+																	{item.scores[0].percentile}%
+																</Typography>
+															</CardContent>
+															<CardContent>
+																<Button
+																	startIcon={<DeveloperModeOutlinedIcon />}
+																	variant="outlined"
+																	size="small"
+																	disabled={showScoreCard == item._id}
+																	onClick={() => setShowScoreCard(item._id)}
+																>
+																	Conduct Interview
+																</Button>
+															</CardContent>
+														</Card>
+													)}
+												</div>
+
+												{showScoreCard === item._id && (
+													<InterviewEditComponent
+														item={item}
+														onSave={updatedItem =>
+															handleSave(updatedItem, index)
+														}
+														onCancel={() => setShowScoreCard(0)}
+													/>
 												)}
 											</div>
-
-											{showScoreCard === item._id && (
-												<InterviewEditComponent
-													item={item}
-													onSave={updatedItem => handleSave(updatedItem, index)}
-													onCancel={() => setShowScoreCard(0)}
-												/>
-											)}
-										</div>
-									</Typography>
-								</AccordionDetails>
-							</Accordion>
-						</>
-					);
-				})}
+										</Typography>
+									</AccordionDetails>
+								</Accordion>
+							</>
+						);
+					})}
+				</div>
 			</div>
 		</div>
 	);

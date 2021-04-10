@@ -18,9 +18,12 @@ const useStyles = makeStyles(theme => ({
 	root: {
 		flexGrow: 1,
 		flexWrap: 'wrap',
+		width: '100%',
+		maxWidth: '900px',
 		'& .MuiTextField-root': {
 			margin: theme.spacing(1)
-		}
+		},
+		margin: 'auto'
 	},
 	paper: {
 		padding: theme.spacing(2),

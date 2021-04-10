@@ -12,7 +12,8 @@ const useStyles = makeStyles(theme => ({
 		flexDirection: 'column',
 		alignItems: 'center',
 		width: '100%',
-		maxWidth: '900px'
+		maxWidth: '900px',
+		margin: 'auto'
 	}
 }));
 
@@ -34,7 +35,7 @@ export default function SlateShow(props) {
 
 	//can I use react switch or something similar here or in slate creator to show each interview?
 	return (
-		<div className={classes.root}>
+		<div>
 			{slate && <SlateCreator slate={slate} />}
 			{!slate && <div>Slate not found</div>}
 		</div>
