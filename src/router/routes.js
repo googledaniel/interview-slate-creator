@@ -2,19 +2,18 @@ import React from 'react';
 import App from '../pages/App';
 import SlateShow from '../pages/SlateShow';
 import Contact from '../pages/Contact';
-import HowTo from '../pages/HowTo';
-import DashShow from '../pages/DashShow';
-import InterviewShow from '../pages/InterviewShow';
+import NewSlate from '../pages/NewSlate';
+
 const routes = [
 	{
-		Component: DashShow,
-		key: 'Dashboard',
-		path: '/dashboard'
+		Component: Contact,
+		key: 'About',
+		path: '/contact'
 	},
 	{
-		Component: Contact,
-		key: 'Contact',
-		path: '/contact'
+		Component: NewSlate,
+		key: 'Create Slate',
+		path: '/new'
 	},
 	{
 		Component: SlateShow,
@@ -22,13 +21,8 @@ const routes = [
 		path: '/:id'
 	},
 	{
-		Component: InterviewShow,
-		key: 'InterviewShow',
-		path: '/:id/:id2'
-	},
-	{
 		Component: App,
-		key: 'App',
+		key: 'Home',
 		path: '/'
 	}
 ];

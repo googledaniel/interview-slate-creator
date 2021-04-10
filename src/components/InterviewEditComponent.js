@@ -11,11 +11,16 @@ import { FormControl } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
+import CardContent from '@material-ui/core/CardContent';
+import Card from '@material-ui/core/Card';
 
 const useStyles = makeStyles(theme => ({
 	root: {
 		flexGrow: 1,
-		flexWrap: 'wrap'
+		flexWrap: 'wrap',
+		'& .MuiTextField-root': {
+			margin: theme.spacing(1)
+		}
 	},
 	paper: {
 		padding: theme.spacing(2),
@@ -24,10 +29,35 @@ const useStyles = makeStyles(theme => ({
 	},
 	textField: {
 		marginLeft: theme.spacing(1),
-		marginRight: theme.spacing(1),
-		width: '25ch'
+		marginRight: theme.spacing(1)
+	},
+	margin: {
+		height: theme.spacing(3)
 	}
 }));
+
+const marks = [
+	{
+		value: 0,
+		label: '0%'
+	},
+	{
+		value: 20,
+		label: '20%'
+	},
+	{
+		value: 50,
+		label: '50%'
+	},
+	{
+		value: 80,
+		label: '80%'
+	},
+	{
+		value: 100,
+		label: '100%'
+	}
+];
 
 function valuetext(value) {
 	return `${value}%`;
@@ -53,94 +83,104 @@ export default function InterviewEditComponent({ item, onCancel, onSave }) {
 
 	return (
 		<FormControl>
-			<h2>Conduct Interview</h2>
-			<div>Main Question: {item.question}</div>
-			<div>
-				Interview type:
-				{item.qSubDomain}
-				{item.subLanguageBoolean && <>, {item.subLanguages}</>}
-			</div>
-			<div>What to look for: {item.lookFor}</div>
-			<div>
-				<TextField
-					id="outlined-full-width"
-					label="Paste Candidate's Code"
-					style={{ margin: 8 }}
-					value={rawCode}
-					onChange={e => setRawCode(e.target.value)}
-					helperText=""
-					fullWidth
-					margin="normal"
-					InputLabelProps={{
-						shrink: true
-					}}
-					variant="filled"
-				/>
-			</div>
-			<div>
-				<TextField
-					id="outlined-full-width"
-					label="Live Interview Notes"
-					style={{ margin: 8 }}
-					value={notes}
-					onChange={e => setNotes(e.target.value)}
-					helperText=""
-					fullWidth
-					margin="normal"
-					InputLabelProps={{
-						shrink: true
-					}}
-					variant="filled"
-				/>
-			</div>
-			<div>
-				<TextField
-					id="outlined-full-width"
-					label="Post-interview Summary"
-					style={{ margin: 8 }}
-					value={summary}
-					onChange={e => setSummary(e.target.value)}
-					helperText=""
-					fullWidth
-					margin="normal"
-					InputLabelProps={{
-						shrink: true
-					}}
-					variant="filled"
-				/>
-			</div>
-			<div>
-				<Typography id="discrete-slider" gutterBottom>
-					Percentile relative to others at same level
-				</Typography>
-				<Slider
-					defaultValue={item.scores.percentile}
-					getAriaValueText={valuetext}
-					aria-labelledby="discrete-slider"
-					valueLabelDisplay="auto"
-					step={10}
-					marks
-					min={0}
-					max={90}
-				/>
-			</div>
-
-			<Button
-				startIcon={<SaveIcon />}
-				variant="outlined"
-				size="small"
-				onClick={handleSave}
-			>
-				Save
-			</Button>
-			<Button
-				startIcon={<DeleteIcon />}
-				variant="outlined"
-				size="small"
-				onClick={() => onCancel(false)}
-			>
-				Close
-			</Button>
+			<Card className={classes.root}>
+				<CardContent>
+					<Typography variant="h6" component="h6">
+						Main Question: {item.question}
+					</Typography>
+				</CardContent>
+				<CardContent>
+					<Typography variant="h6" component="h6">
+						What to look for: {item.lookFor}
+					</Typography>
+				</CardContent>
+				<div>
+					<TextField
+						id="outlined-full-width"
+						label="Paste Candidate's Code"
+						style={{ margin: 8 }}
+						value={rawCode}
+						onChange={e => setRawCode(e.target.value)}
+						helperText=""
+						fullWidth
+						multiline
+						rows={8}
+						margin="normal"
+						InputLabelProps={{
+							shrink: true
+						}}
+						variant="filled"
+					/>
+				</div>
+				<div>
+					<TextField
+						id="outlined-full-width"
+						label="Live Interview Notes"
+						style={{ margin: 8 }}
+						value={notes}
+						onChange={e => setNotes(e.target.value)}
+						helperText=""
+						fullWidth
+						multiline
+						rows={8}
+						margin="normal"
+						InputLabelProps={{
+							shrink: true
+						}}
+						variant="filled"
+					/>
+				</div>
+				<div>
+					<TextField
+						id="outlined-full-width"
+						label="Post-interview Summary"
+						style={{ margin: 8 }}
+						value={summary}
+						onChange={e => setSummary(e.target.value)}
+						helperText=""
+						fullWidth
+						multiline
+						rows={8}
+						margin="normal"
+						InputLabelProps={{
+							shrink: true
+						}}
+						variant="filled"
+					/>
+				</div>
+				<CardContent>
+					<Typography id="discrete-slider-custom" gutterBottom>
+						Percentile relative to others at same level:{' '}
+						{item.scores[0].percentile}
+					</Typography>
+					<Slider
+						defaultValue={item.scores[0].percentile}
+						getAriaValueText={valuetext}
+						aria-labelledby="discrete-slider-custom"
+						valueLabelDisplay="true"
+						step={10}
+						marks={marks}
+					/>
+				</CardContent>
+				<CardContent>
+					<Button
+						startIcon={<SaveIcon />}
+						variant="outlined"
+						size="small"
+						onClick={handleSave}
+					>
+						Save
+					</Button>
+					<Button
+						startIcon={<DeleteIcon />}
+						variant="outlined"
+						size="small"
+						onClick={() => onCancel(false)}
+					>
+						Close
+					</Button>
+				</CardContent>
+			</Card>
 		</FormControl>
 	);
 }

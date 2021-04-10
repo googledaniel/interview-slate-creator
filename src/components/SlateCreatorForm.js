@@ -6,6 +6,60 @@ import questionModel from '../../models/questionModel';
 import { makeStyles } from '@material-ui/core/styles';
 import { FormControl } from '@material-ui/core';
 import { TextField } from '@material-ui/core';
+import Typography from '@material-ui/core/Typography';
+import CardContent from '@material-ui/core/CardContent';
+import Card from '@material-ui/core/Card';
+import SaveIcon from '@material-ui/icons/Save';
+import Button from '@material-ui/core/Button';
+import BottomNavBar from './BottomNavBar';
+
+const useStyles = makeStyles(theme => ({
+	root: {
+		flexGrow: 1,
+		flexWrap: 'wrap',
+		width: '850px'
+	},
+	paper: {
+		padding: theme.spacing(2),
+		textAlign: 'center',
+		color: theme.palette.text.secondary
+	},
+	textField: {
+		marginLeft: theme.spacing(1),
+		marginRight: theme.spacing(1),
+		width: '25ch'
+	},
+	margin: {
+		height: theme.spacing(3)
+	}
+}));
+
+const marks = [
+	{
+		value: 0,
+		label: '0%'
+	},
+	{
+		value: 20,
+		label: '20%'
+	},
+	{
+		value: 50,
+		label: '50%'
+	},
+	{
+		value: 80,
+		label: '80%'
+	},
+	{
+		value: 100,
+		label: '100%'
+	}
+];
+
+function valuetext(value) {
+	return `${value}%`;
+}
 
 const question = questionModel;
 
@@ -16,6 +70,7 @@ export default function SlateCreatorForm(props) {
 	const refCodingLanguage = useRef('');
 	const refLevel = useRef('');
 	const refDomain = useRef('');
+	const classes = useStyles();
 
 	const handleSubmit = async e => {
 		e.preventDefault();
@@ -68,55 +123,58 @@ export default function SlateCreatorForm(props) {
 
 	return (
 		<>
-			<div className="form-control border-0">
+			<div>
 				{!slate && (
-					<form onSubmit={handleSubmit}>
-						<div className="form-group">
-							<label>Candidate Name </label>
-							<input type="text" ref={refCandidateName} />
-						</div>
+					<FormControl onSubmit={handleSubmit}>
+						<Card className={classes.root}>
+							<CardContent>
+								<Typography variant="h6" component="h6">
+									Candidate Name{' '}
+								</Typography>
+								<input type="text" ref={refCandidateName} />
+							</CardContent>
 
-						<div className="form-group">
-							<label>Coding Language </label>
-							<input type="text" ref={refCodingLanguage} />
-						</div>
-						<div className="form-group">
-							<label>
-								Level
-								<select
-									className="form-select"
-									aria-label="Default select example"
-									ref={refLevel}
+							<CardContent>
+								<Typography variant="h6" component="h6">
+									Coding Language{' '}
+								</Typography>
+								<input type="text" ref={refCodingLanguage} />
+							</CardContent>
+							<CardContent>
+								<Typography variant="h6" component="h6">
+									Level
+									<select aria-label="Default select example" ref={refLevel}>
+										<option defaultValue>Experience Level</option>
+										<option value="3">Level 3 (Jr SWE)</option>
+										<option value="4">Level 4 (Mid SWE)</option>
+										<option value="5">Level 5 (Sr SWE)</option>
+									</select>
+								</Typography>
+							</CardContent>
+							<CardContent>
+								<Typography variant="h6" component="h6">
+									Domain
+									<select aria-label="Default select example" ref={refDomain}>
+										<option defaultValue>SWE Domain</option>
+										<option value="FE">Frontend</option>
+										<option value="BE">Backend</option>
+										<option value="Infra">Infra</option>
+									</select>
+								</Typography>
+							</CardContent>
+							<CardContent>
+								<Button
+									startIcon={<SaveIcon />}
+									variant="outlined"
+									size="small"
+									type="submit"
+									onClick={handleSubmit}
 								>
-									<option defaultValue>Experience Level</option>
-									<option value="3">Level 3 (Jr SWE)</option>
-									<option value="4">Level 4 (Mid SWE)</option>
-									<option value="5">Level 5 (Sr SWE)</option>
-								</select>
-							</label>
-						</div>
-						<div className="form-group">
-							<label>
-								Domain
-								<select
-									className="form-select"
-									aria-label="Default select example"
-									ref={refDomain}
-								>
-									<option defaultValue>SWE Domain</option>
-									<option value="FE">Frontend</option>
-									<option value="BE">Backend</option>
-									<option value="Infra">Infra</option>
-								</select>
-							</label>
-						</div>
-
-						<input
-							className="btn btn-outline-dark"
-							type="submit"
-							value={'Make a Slate'}
-						/>
-					</form>
+									Make Slate
+								</Button>
+							</CardContent>
+						</Card>
+					</FormControl>
 				)}
 				<div>{slate && <SlateCreator slate={slate} />}</div>
 			</div>

@@ -13,11 +13,22 @@ import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
 import InterviewShowComponent from './InterviewShowComponent';
+import Accordion from '@material-ui/core/Accordion';
+import AccordionSummary from '@material-ui/core/AccordionSummary';
+import AccordionDetails from '@material-ui/core/AccordionDetails';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
 
 const useStyles = makeStyles(theme => ({
 	root: {
 		flexGrow: 1,
-		flexWrap: 'wrap'
+		flexWrap: 'wrap',
+		flexDirection: 'column',
+		alignItems: 'center',
+		width: '100%',
+		maxWidth: '900px'
 	},
 	paper: {
 		padding: theme.spacing(2),
@@ -28,6 +39,28 @@ const useStyles = makeStyles(theme => ({
 		marginLeft: theme.spacing(1),
 		marginRight: theme.spacing(1),
 		width: '25ch'
+	},
+	heading: {
+		fontSize: theme.typography.pxToRem(15),
+		fontWeight: theme.typography.fontWeightRegular
+	},
+	secondaryHeading: {
+		fontSize: theme.typography.pxToRem(15),
+		color: theme.palette.text.secondary
+	},
+	bullet: {
+		display: 'inline-block',
+		margin: '0 2px',
+		transform: 'scale(0.8)'
+	},
+	title: {
+		fontSize: 14
+	},
+	pos: {
+		marginBottom: 12
+	},
+	margin: {
+		height: theme.spacing(3)
 	}
 }));
 
@@ -52,74 +85,101 @@ export default function SlateCreator(props) {
 	}, []);
 
 	return (
-		<div>
-			<h3>Candidate: {slate.candidateName}</h3>
-			<p>Coding Language: {slate.codingLanguage}</p>
-			<p>Level: {slate.level}</p>
-			<p>Domain: {slate.domain}</p>
-			<p>
-				<a href={`http://localhost:3000/${props.slate._id}`}>Share Link</a>
-			</p>
-
-			<ul className="justify-content-start">
+		<div className={classes.root}>
+			<Card className={classes.root}>
+				<CardContent>
+					<Typography variant="h2" component="h2">
+						{slate.candidateName}
+					</Typography>
+					<Typography variant="h4" component="h4">
+						{slate.codingLanguage} | L{slate.level} | {slate.domain}
+					</Typography>
+				</CardContent>
+			</Card>
+			<div>
 				{slate.questions.map((item, index) => {
 					return (
 						<>
-							<div key={index} className="card padding">
-								<div className="card-header">
-									<Button
-										startIcon={<DeveloperModeOutlinedIcon />}
-										variant="outlined"
-										size="small"
-										disabled={showScoreCard == item._id}
-										onClick={() => setShowScoreCard(item._id)}
-									>
-										Conduct Interview
-									</Button>
-
-									<div>
-										Interviewer: {item.interviewerName} | {item.qSubDomain}
-									</div>
-								</div>
-								<div className="card-body">
-									{showScoreCard !== item._id && (
-										<>
-											<div>Main Question: {item.question}</div>
+							<Accordion>
+								<AccordionSummary
+									expandIcon={<ExpandMoreIcon />}
+									aria-controls="panel1a-content"
+									id="panel1a-header"
+								>
+									<Typography variant="h5" component="h5">
+										{index + 1} | Interviewer:{' '}
+										{!item.interviewerName && <> No interviewer assigned </>}
+										{item.interviewerName} | {item.qSubDomain}
+										{item.subLanguageBoolean && <>, {item.subLanguages}</>}
+									</Typography>
+								</AccordionSummary>
+								<AccordionDetails>
+									<Typography>
+										<div key={index}>
 											<div>
-												Interview type:
-												{item.qSubDomain}
-												{item.subLanguageBoolean && <>, {item.subLanguages}</>}
+												{showScoreCard !== item._id && (
+													<Card className={classes.root}>
+														<CardContent>
+															<Typography variant="h6" component="h6">
+																Main Question: {item.question}
+															</Typography>
+														</CardContent>
+														<CardContent>
+															<Typography variant="h6" component="h6">
+																What to look for: {item.lookFor}
+															</Typography>
+														</CardContent>
+														<CardContent>
+															<Typography variant="h6" component="h6">
+																Candidate's code: {item.rawCode}
+															</Typography>
+														</CardContent>
+														<CardContent>
+															<Typography variant="h6" component="h6">
+																Interviewer code notes: {item.notes}
+															</Typography>
+														</CardContent>
+														<CardContent>
+															<Typography variant="h6" component="h6">
+																Post-interview summary: {item.summary}
+															</Typography>
+														</CardContent>
+														<CardContent>
+															<Typography variant="h6" component="h6">
+																{item.scores[0].scoreType} Score:{' '}
+																{item.scores[0].percentile}%
+															</Typography>
+														</CardContent>
+														<CardContent>
+															<Button
+																startIcon={<DeveloperModeOutlinedIcon />}
+																variant="outlined"
+																size="small"
+																disabled={showScoreCard == item._id}
+																onClick={() => setShowScoreCard(item._id)}
+															>
+																Conduct Interview
+															</Button>
+														</CardContent>
+													</Card>
+												)}
 											</div>
-											<div>What to look for: {item.lookFor}</div>
-											<div>Candidate's code: {item.rawCode}</div>
-											<div>Interviewer code notes: {item.notes}</div>
-											<div>Post-interview summary: {item.summary}</div>
-											<div>
-												Scores:{' '}
-												{item.scores.map((subItem, i) => {
-													return (
-														<div key={i}>
-															{subItem.scoreType}: {subItem.percentile}%
-														</div>
-													);
-												})}
-											</div>
-										</>
-									)}
-								</div>
 
-								{showScoreCard === item._id && (
-									<InterviewEditComponent
-										item={item}
-										onSave={updatedItem => handleSave(updatedItem, index)}
-										onCancel={() => setShowScoreCard(0)}
-									/>
-								)}
-							</div>
+											{showScoreCard === item._id && (
+												<InterviewEditComponent
+													item={item}
+													onSave={updatedItem => handleSave(updatedItem, index)}
+													onCancel={() => setShowScoreCard(0)}
+												/>
+											)}
+										</div>
+									</Typography>
+								</AccordionDetails>
+							</Accordion>
 						</>
 					);
 				})}
-			</ul>
+			</div>
 		</div>
 	);
 }

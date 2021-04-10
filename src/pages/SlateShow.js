@@ -3,10 +3,23 @@ import { Link } from 'react-router-dom';
 import SlateCreator from '../components/SlateCreator';
 import HmDashboard from '../components/hmDashboard';
 import Button from '@material-ui/core/Button';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles(theme => ({
+	root: {
+		flexGrow: 1,
+		flexWrap: 'wrap',
+		flexDirection: 'column',
+		alignItems: 'center',
+		width: '100%',
+		maxWidth: '900px'
+	}
+}));
 
 export default function SlateShow(props) {
 	const [slate, setSlate] = useState();
-	console.log('slate show - pre useEffect');
+	const classes = useStyles();
+
 	useEffect(() => {
 		(async () => {
 			try {
@@ -21,9 +34,9 @@ export default function SlateShow(props) {
 
 	//can I use react switch or something similar here or in slate creator to show each interview?
 	return (
-		<>
+		<div className={classes.root}>
 			{slate && <SlateCreator slate={slate} />}
 			{!slate && <div>Slate not found</div>}
-		</>
+		</div>
 	);
 }

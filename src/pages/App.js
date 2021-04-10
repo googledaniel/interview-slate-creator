@@ -26,22 +26,7 @@ import { TextField, FormControl, Radio, Box } from '@material-ui/core';
 
 const question = questionModel;
 
-const useStyles = makeStyles(() => ({
-	root: {
-		display: 'flex',
-		flexDirection: 'column',
-		padding: '20px',
-		width: '-webkit-fill-available',
-		maxWidth: '900px',
-		alignItems: 'center',
-		'& > * + *': {
-			marginTop: '25px'
-		}
-	}
-}));
-
 export default function App(props) {
-	const classes = useStyles();
 	const [slate, setSlate] = useState();
 	const [slates, setSlates] = useState();
 
@@ -59,21 +44,5 @@ export default function App(props) {
 		})();
 	}, []);
 
-	return (
-		<>
-			<div className={classes.root}>
-				<Grid container spacing={12}>
-					<Grid item xs={9}>
-						<Paper className={classes.paper}>
-							{slates && <HmDashboard slates={slates} />}
-						</Paper>
-					</Grid>
-				</Grid>
-
-				{/*<div>*/}
-				{/*	<SlateCreatorForm />*/}
-				{/*</div>*/}
-			</div>
-		</>
-	);
+	return <>{slates && <HmDashboard slates={slates} />}</>;
 }

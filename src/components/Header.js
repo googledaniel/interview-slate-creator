@@ -1,12 +1,11 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-
+import AccountCircle from '@material-ui/icons/AccountCircle';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 
@@ -22,38 +21,37 @@ const useStyles = makeStyles(theme => ({
 	}
 }));
 
-export default function NavBar(props) {
+export default function Header() {
 	const classes = useStyles();
 	const [anchorEl, setAnchorEl] = React.useState(null);
 	const open = Boolean(anchorEl);
+
 
 	const handleMenu = event => {
 		setAnchorEl(event.currentTarget);
 	};
 
-	const handleMenuClick = pageURL => {
-		setAnchorEl(pageURL);
+	const handleClose = () => {
+		setAnchorEl(null);
 	};
 
 	return (
-		<nav className={classes.root}>
+		<div className={classes.root}>
 			<AppBar position="static">
 				<Toolbar>
+					<IconButton
+						edge="start"
+						className={classes.menuButton}
+						color="inherit"
+						aria-label="menu"
+					>
+						<MenuIcon />
+					</IconButton>
 					<Typography variant="h6" className={classes.title}>
 						Interview App
 					</Typography>
 
 					<div>
-						<IconButton
-							edge="start"
-							className={classes.menuButton}
-							color="inherit"
-							aria-label="menu"
-							onClick={handleMenu}
-						>
-							<MenuIcon />
-						</IconButton>
-
 						<Menu
 							id="menu-appbar"
 							anchorEl={anchorEl}
@@ -67,43 +65,15 @@ export default function NavBar(props) {
 								horizontal: 'right'
 							}}
 							open={open}
-							onClose={() => setAnchorEl(null)}
+							onClose={handleClose}
 						>
-							<MenuItem onClick={() => handleMenuClick('/')}>Home</MenuItem>
-							<MenuItem onClick={() => handleMenuClick('/new')}>
-								Make Slate
-							</MenuItem>
-							<MenuItem onClick={() => handleMenuClick('/contact')}>
-								About
-							</MenuItem>
+							<MenuItem onClick={handleClose}>Home</MenuItem>
+							<MenuItem onClick={handleClose}>Make Slate</MenuItem>
+							<MenuItem onClick={handleClose}>About</MenuItem>
 						</Menu>
 					</div>
 				</Toolbar>
 			</AppBar>
-		</nav>
+		</div>
 	);
 }
-//
-// const NavBar = props => {
-// 	return (
-// 		<nav>
-// 			<div>
-// 				<div>
-// 					<ul>
-// 						{props.routes
-// 							.filter(item => !item.path.includes(':'))
-// 							.map(({ key, path }) => (
-// 								<li>
-// 									<Link key={key} to={path}>
-// 										{key}
-// 									</Link>
-// 								</li>
-// 							))}
-// 					</ul>
-// 				</div>
-// 			</div>
-// 		</nav>
-// 	);
-// };
-//
-// export default NavBar;

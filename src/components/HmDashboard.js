@@ -10,10 +10,15 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
 
 const useStyles = makeStyles(theme => ({
 	root: {
-		flexGrow: 1
+		flexGrow: 1,
+		flexWrap: 'wrap',
+		width: '850px',
+		maxWidth: '900px'
 	},
 	paper: {
 		padding: theme.spacing(2),
@@ -27,32 +32,27 @@ export default function HmDashboard(props) {
 
 	return (
 		<div className={classes.root}>
-			<Container maxWidth="lg">
-				<React.Fragment>
-					<Table size="small">
-						<TableHead>
-							<TableRow>
-								<TableCell>Candidate</TableCell>
-								<TableCell>Level</TableCell>
-								<TableCell>Domain</TableCell>
-								<TableCell>Main Language</TableCell>
-							</TableRow>
-						</TableHead>
-						<TableBody>
-							{props.slates.map(item => (
-								<TableRow key={item.id}>
-									<TableCell>
-										<Link to={`/${item._id}`}>{item.candidateName}</Link>
-									</TableCell>
-									<TableCell>{item.level}</TableCell>
-									<TableCell>{item.domain}</TableCell>
-									<TableCell>{item.codingLanguage}</TableCell>
-								</TableRow>
-							))}
-						</TableBody>
-					</Table>
-				</React.Fragment>
-			</Container>
+			<Card className={classes.root}>
+				<CardContent fullWidth>
+					<Typography variant="h3" component="h3">
+						Slate Dashboard
+					</Typography>
+				</CardContent>
+			</Card>
+			{props.slates.map(item => (
+				<Card className={classes.root}>
+					<CardContent>
+						<Paper>
+							<Typography variant="h4" component="h4">
+								<Link to={`/${item._id}`}>{item.candidateName}</Link>
+							</Typography>
+							<Typography variant="h6" component="h6">
+								{item.codingLanguage} | L{item.level} | {item.domain}
+							</Typography>
+						</Paper>
+					</CardContent>
+				</Card>
+			))}
 		</div>
 	);
 }
