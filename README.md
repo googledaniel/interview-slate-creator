@@ -1,28 +1,35 @@
 # Interview App
 
-Creates interview slates for hiring managers, documents interview feedback in one
-dashboard and averages the recommendations from the interviewers.
+This app helps hiring teams create, document and track SWE interviews. 
 
-# Core Concepts
+# MVP Concepts
 
-This is based on interview science applied in most big tech companies.
-
-After getting the rubric the function then accesses a model of questions to randomly get the right mix of questions (and not repeat any). It uses .map and recursion to create that mix.
-
-I created an API with mongo to save the final slate and use a unique ID for that slate to be shared. Importantly, the questions are not looped through again. The whole slate needs to be statically saved to the database so no updates to the questions change it.
+- Tech hiring managers and recruiters need to make structured interview slates. The slates use different types of questions depending on level and candidate domain.
+- Making slates consistent to the level and domain is important so candidates can be benchmarked. However, the questions need to be randomly chosen by a rubric engine so the same questions aren't asked each time.
+- The next step is organizing the slates by each candidate. Team members need to paste the code, write live notes during the interview and give a percentile score relative to other engineers they've seen at that level.
+- The next steps will be adding auth and user profiles. The scoring will also be more complex to breakdown different types of scoring and calculate averages for each candidate. An email system needs to be added to send interviewers an invite.
 
 # Technology Used
-- React and React Router to navigate.
-- Vanilla Javascript for checking the rubric and create the slate with the questions.
+- Material UI
+- React and React Router to navigate
+- Vanilla Javascript for rubric engine (slate creator)
 - Express APIs and Mongo
-- Bootstrap
+
 
 # Wins
-- I really wanted to understand APIs better and make my own. It took nearly all my time on the project but I'm happy it finally works!
-- This app also happens to be a demo I will use in Google. Engineers want an update to QDroid in Google (which spits out a single question) to be more sophisticated and make sure engineers don't duplicate questions on our interviews.
-- The app was designed mobile first. It needs some work on sizing and style but it's certainly easier to do mobile first!
+- The core of this app is the rubric engine. It automates a strategic part of recruiting work and makes sure the interviews are structured. Lack of interview structure is one of the biggest issues in hiring.
+- I wanted to learn Material UI since I work at Google but used React for this app. I found it to be really simple after learning how it works. I can see how powerful it is in a larger teams. 
+- The overall UI can be improved easily thanks to MUI. I kept the design professional and corporate because this is a business side product.
+- The interview scorecards will be very useful when they gather percentile scores. 
 
 # Challenges 
-- My API was really difficult to make. I just didn't understand routes well and I needed over a week to figure it out.
-- My React Router is bugging out by not showing my other pages.
-- Bootstrap throws some container bugs that I don't understand yet. It's a new library for me and I need to keep learning more about it.
+- I got VERY stuck on my API. First, I had an issue with Rails on my new M1 Mac so I switched back to Node.js. Then it took me two weeks to realized I built my schema incorrectly.
+- Due to the schema issue, the whole object for a candidate slate needs to be saved through a put route. That's a big issue because multiple people will need to work on their interview on the slate at the same time. It will overwrite everyone elses work when the last person saves.
+- Material UI is very cool but it's extremely different from anything else I worked with. I needed over a week just to understand some basics.
+
+# Next Steps
+- Flatten out the schema into: slate, questions, users and scores.
+- Adding auth and user profiles.
+- Move the question and rubric models to Mongo and create routes.
+- Add edit forms for interviewers and add their emails.
+- Send invite emails to interviewers.

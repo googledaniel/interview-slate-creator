@@ -1,24 +1,17 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import InterviewEditComponent from '../components/InterviewEditComponent';
 import Button from '@material-ui/core/Button';
-import SaveIcon from '@material-ui/icons/Save';
-import DeleteIcon from '@material-ui/icons/Delete';
+
 import DeveloperModeOutlinedIcon from '@material-ui/icons/DeveloperModeOutlined';
-import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
-import { FormControl } from '@material-ui/core';
-import TextField from '@material-ui/core/TextField';
+
 import Typography from '@material-ui/core/Typography';
-import Slider from '@material-ui/core/Slider';
-import InterviewShowComponent from './InterviewShowComponent';
+
 import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 
 const useStyles = makeStyles(theme => ({

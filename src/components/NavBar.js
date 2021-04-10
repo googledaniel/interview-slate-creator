@@ -31,79 +31,55 @@ export default function NavBar(props) {
 		setAnchorEl(event.currentTarget);
 	};
 
-	const handleMenuClick = pageURL => {
-		setAnchorEl(pageURL);
+	const handleMenuClick = () => {
+		setAnchorEl(null);
 	};
 
 	return (
-		<nav className={classes.root}>
-			<AppBar position="static">
-				<Toolbar>
-					<Typography variant="h6" className={classes.title}>
-						Interview App
-					</Typography>
+		<AppBar position="static">
+			<Toolbar>
+				<Typography variant="h6" className={classes.title}>
+					Interview App
+				</Typography>
 
-					<div>
-						<IconButton
-							edge="start"
-							className={classes.menuButton}
-							color="inherit"
-							aria-label="menu"
-							onClick={handleMenu}
-						>
-							<MenuIcon />
-						</IconButton>
+				<div>
+					<IconButton
+						edge="start"
+						className={classes.menuButton}
+						color="inherit"
+						aria-label="menu"
+						onClick={handleMenu}
+					>
+						<MenuIcon />
+					</IconButton>
 
-						<Menu
-							id="menu-appbar"
-							anchorEl={anchorEl}
-							anchorOrigin={{
-								vertical: 'top',
-								horizontal: 'right'
-							}}
-							keepMounted
-							transformOrigin={{
-								vertical: 'top',
-								horizontal: 'right'
-							}}
-							open={open}
-							onClose={() => setAnchorEl(null)}
-						>
-							<MenuItem onClick={() => handleMenuClick('/')}>Home</MenuItem>
-							<MenuItem onClick={() => handleMenuClick('/new')}>
-								Make Slate
-							</MenuItem>
-							<MenuItem onClick={() => handleMenuClick('/contact')}>
-								About
-							</MenuItem>
-						</Menu>
-					</div>
-				</Toolbar>
-			</AppBar>
-		</nav>
+					<Menu
+						id="menu-appbar"
+						anchorEl={anchorEl}
+						anchorOrigin={{
+							vertical: 'top',
+							horizontal: 'right'
+						}}
+						keepMounted
+						transformOrigin={{
+							vertical: 'top',
+							horizontal: 'right'
+						}}
+						open={open}
+						onClose={() => setAnchorEl(null)}
+					>
+						<MenuItem onClick={handleMenuClick}>
+							<Link to="/">Home</Link>
+						</MenuItem>
+						<MenuItem onClick={handleMenuClick}>
+							<Link to="/new">Make Slate</Link>
+						</MenuItem>
+						<MenuItem onClick={handleMenuClick}>
+							<Link to="/contact">About</Link>
+						</MenuItem>
+					</Menu>
+				</div>
+			</Toolbar>
+		</AppBar>
 	);
 }
-//
-// const NavBar = props => {
-// 	return (
-// 		<nav>
-// 			<div>
-// 				<div>
-// 					<ul>
-// 						{props.routes
-// 							.filter(item => !item.path.includes(':'))
-// 							.map(({ key, path }) => (
-// 								<li>
-// 									<Link key={key} to={path}>
-// 										{key}
-// 									</Link>
-// 								</li>
-// 							))}
-// 					</ul>
-// 				</div>
-// 			</div>
-// 		</nav>
-// 	);
-// };
-//
-// export default NavBar;

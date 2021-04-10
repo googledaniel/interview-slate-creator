@@ -1,6 +1,5 @@
 const Slate = require('../../models/slateModel');
 const express = require('express');
-//renaned slateRouter to just router
 const router = express.Router();
 
 
@@ -18,10 +17,6 @@ router.get('/', async (req, res) => {
 			.json(error)
 	}
 })
-
-//Update
-
-//Destroy
 
 
 module.exports = router

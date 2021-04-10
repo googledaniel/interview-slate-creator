@@ -24,10 +24,7 @@ import { TextField, FormControl, Radio, Box } from '@material-ui/core';
 
 //Material UI style created in sandbox templates: https://codesandbox.io/s/1l8ej?file=/demo.js:27-382
 
-const question = questionModel;
-
 export default function App(props) {
-	const [slate, setSlate] = useState();
 	const [slates, setSlates] = useState();
 
 	//UseEffect might solve the issue getting HmDashboard to load on start. Set slates on start

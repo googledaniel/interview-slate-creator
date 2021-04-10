@@ -15,16 +15,22 @@ import CardContent from '@material-ui/core/CardContent';
 
 const useStyles = makeStyles(theme => ({
 	root: {
-		flexGrow: 1,
-		flexWrap: 'wrap',
-		width: '850px',
-		maxWidth: '900px'
+		display: 'flex',
+		flex: 1,
+		width: '100%',
+		maxWidth: '900px',
+		margin: 'auto'
 	},
-	paper: {
-		padding: theme.spacing(2),
-		textAlign: 'center',
-		color: theme.palette.text.secondary
-	}
+	cardContainer: {
+		display: 'flex',
+		flexDirection: 'column',
+		flex: 1,
+		width: '100%',
+		'& > * + *': {
+			marginTop: '20px'
+		}
+	},
+	card: {}
 }));
 
 export default function HmDashboard(props) {
@@ -32,27 +38,23 @@ export default function HmDashboard(props) {
 
 	return (
 		<div className={classes.root}>
-			<Card className={classes.root}>
-				<CardContent fullWidth>
-					<Typography variant="h3" component="h3">
-						Slate Dashboard
-					</Typography>
-				</CardContent>
-			</Card>
-			{props.slates.map(item => (
-				<Card className={classes.root}>
-					<CardContent>
-						<Paper>
+			<div className={classes.cardContainer}>
+				<Typography variant="h3" component="h3">
+					Slate Dashboard
+				</Typography>
+				{props.slates.map(item => (
+					<Card className={classes.card}>
+						<CardContent>
 							<Typography variant="h4" component="h4">
 								<Link to={`/${item._id}`}>{item.candidateName}</Link>
 							</Typography>
 							<Typography variant="h6" component="h6">
 								{item.codingLanguage} | L{item.level} | {item.domain}
 							</Typography>
-						</Paper>
-					</CardContent>
-				</Card>
-			))}
+						</CardContent>
+					</Card>
+				))}
+			</div>
 		</div>
 	);
 }
