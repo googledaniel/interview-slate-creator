@@ -25,7 +25,7 @@ const useStyles = makeStyles(theme => ({
 	card: {}
 }));
 
-export default function HmDashboard2(props) {
+export default function HmDashboard(props) {
 	const classes = useStyles();
 
 	return (

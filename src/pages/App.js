@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import SlateCreator from '../components/SlateCreator';
 import OurContext from '../context';
 import SlateCreatorForm from '../components/SlateCreatorForm';
-import HmDashboard2 from '../components/HmDashboard2';
+import HmDashboard from '../components/HmDashboard';
 import rubricModel from '../../models/rubricModel';
 import questionModel from '../../models/questionModel';
 import { makeStyles } from '@material-ui/core/styles';
@@ -27,7 +27,7 @@ import { TextField, FormControl, Radio, Box } from '@material-ui/core';
 export default function App(props) {
 	const [slates, setSlates] = useState();
 
-	//UseEffect might solve the issue getting HmDashboard2 to load on start. Set slates on start
+	//UseEffect might solve the issue getting HmDashboard to load on start. Set slates on start
 
 	useEffect(() => {
 		(async () => {
@@ -41,5 +41,5 @@ export default function App(props) {
 		})();
 	}, []);
 
-	return <>{slates && <HmDashboard2 slates={slates} />}</>;
+	return <>{slates && <HmDashboard slates={slates} />}</>;
 }
