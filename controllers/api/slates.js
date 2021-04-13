@@ -1,6 +1,5 @@
 const Slate = require('../../models/slateModel');
 const express = require('express');
-//remaned slateRouter to just router
 const router = express.Router();
 
 // Create Slate

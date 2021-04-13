@@ -1,14 +1,14 @@
-const Interview = require('../../models/interviewModel');
+const Question = require('../../models/questionModel');
 const express = require('express');
 const router = express.Router();
 
-// Create
+// Create Slate
 router.post('/', async (req, res) => {
 	try {
-		const newObject = await Interview.create(req.body)
+		const newSlate = await Question.create(req.body)
 		res
 			.status(200)
-			.json(newObject)
+			.json(newSlate)
 
 	} catch (error) {
 		res
@@ -17,13 +17,14 @@ router.post('/', async (req, res) => {
 	}
 })
 
-//Read
+//Read Slate
 router.get('/:id', async (req, res) => {
 	try {
-		const found = await Interview.findById(req.params.id)
+		const foundSlate = await Question.findById(req.params.id)
+		// await foundSlate.execPopulate('slate')
 		res
 			.status(200)
-			.json(found)
+			.json(foundSlate)
 	} catch (error) {
 		res
 			.status(400)
@@ -35,10 +36,11 @@ router.get('/:id', async (req, res) => {
 
 router.put('/:id', async (req, res) => {
 	try {
-		const found = await Interview.findByIdAndUpdate(req.params.id, req.body, { new: true })
+		const foundSlate = await Question.findByIdAndUpdate(req.params.id, req.body, { new: true })
+		// await foundSlate.execPopulate('slate')
 		res
 			.status(200)
-			.json(found)
+			.json(foundSlate)
 	} catch (error) {
 		res
 			.status(400)
@@ -47,14 +49,15 @@ router.put('/:id', async (req, res) => {
 })
 
 
-//Destroy
+//Destroy - only for admin to use later, not in main app.
 
 router.delete('/:id', async (req, res) => {
 	try {
-		const found = await Interview.findByIdAndDelete(req.params.id)
+		const foundSlate = await Question.findByIdAndDelete(req.params.id)
+		// await foundSlate.execPopulate('slate')
 		res
 			.status(200)
-			.json(found)
+			.json(foundSlate)
 	} catch (error) {
 		res
 			.status(400)

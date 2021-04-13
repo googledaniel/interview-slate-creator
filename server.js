@@ -26,6 +26,9 @@ if (process.env.NODE_ENV !== 'development'){
 
 /* Define the controller routes here */
 app.use('/api/slates', require('./controllers/api/slates'))
+app.use('/api/questions', require('./controllers/api/questions'))
+app.use('/api/scores', require('./controllers/api/scores'))
+app.use('/api/interviews', require('./controllers/api/interviews'))
 // app.use('/api/users', require('./controllers/api/users'))
 app.use('/api/dashboards', require('./controllers/api/dashboards'))
 // app.use('/api/auth', require('./controllers/api/auth'))
