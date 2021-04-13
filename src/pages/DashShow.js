@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import SlateCreator from '../components/SlateCreator';
-import HmDashboard from '../components/HmDashboard';
+import HmDashboard2 from '../components/HmDashboard2';
 
 export default function DashShow(props) {
 	const [slates, setSlates] = useState([]);
@@ -21,11 +21,11 @@ export default function DashShow(props) {
 
 	// {slates && <div> </>}
 	// {!slates && <div>Dashboard not found</div>}
-	//<HmDashboard slates={slates} />
+	//<HmDashboard2 slates={slates} />
 
 	return (
 		<>
-			{slates && <HmDashboard slates={slates} />}
+			{slates && <HmDashboard2 slates={slates} />}
 			{!slates && <div>Dashboard not found</div>}
 		</>
 	);

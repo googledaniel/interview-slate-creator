@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import SlateCreator from '../components/SlateCreator';
-import HmDashboard from '../components/hmDashboard';
+import HmDashboard2 from '../components/HmDashboard2';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 
