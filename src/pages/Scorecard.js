@@ -1,4 +1,3 @@
-//is this page even in use? I don't think so. Delete later.
 
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';

@@ -32,7 +32,7 @@ export default function App(props) {
 	useEffect(() => {
 		(async () => {
 			try {
-				const response = await fetch('http://localhost:3000/api/dashboards');
+				const response = await fetch('/api/dashboards');
 				const data = await response.json();
 				setSlates(data);
 			} catch (error) {

@@ -19,9 +19,6 @@ export default function DashShow(props) {
 		})();
 	}, []);
 
-	// {slates && <div> </>}
-	// {!slates && <div>Dashboard not found</div>}
-	//<HmDashboard slates={slates} />
 
 	return (
 		<>
