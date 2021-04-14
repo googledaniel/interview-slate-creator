@@ -122,32 +122,47 @@ export default function SlateCreator(props) {
 													{showScoreCard !== item._id && (
 														<Card className={classes.root}>
 															<CardContent>
-																<Typography variant="h6" component="h6">
-																	Main Question: {item.question}
+																<Typography variant="h5" component="h5">
+																	Main Question:
+																	<Typography variant="h6" component="h6">
+																		{item.question}
+																	</Typography>
 																</Typography>
 															</CardContent>
 															<CardContent>
-																<Typography variant="h6" component="h6">
-																	What to look for: {item.lookFor}
+																<Typography variant="h5" component="h5">
+																	What to look for:
+																	<Typography variant="h6" component="h6">
+																		{item.lookFor}
+																	</Typography>
 																</Typography>
 															</CardContent>
 															<CardContent>
-																<Typography variant="h6" component="h6">
-																	Candidate's code: {item.rawCode}
+																<Typography variant="h5" component="h5">
+																	Candidate's code:
+																	<Typography variant="h6" component="h6">
+																		{item.rawCode}
+																	</Typography>
 																</Typography>
 															</CardContent>
 															<CardContent>
-																<Typography variant="h6" component="h6">
-																	Interviewer code notes: {item.notes}
+																<Typography variant="h5" component="h5">
+																	Interviewer code notes:
+																	<Typography variant="h6" component="h6">
+																		{item.notes}
+																	</Typography>
 																</Typography>
 															</CardContent>
 															<CardContent>
-																<Typography variant="h6" component="h6">
-																	Post-interview summary: {item.summary}
+																<Typography variant="h5" component="h5">
+																	Post-interview summary:
+																	<Typography variant="h6" component="h6">
+																		{item.summary}
+																	</Typography>
 																</Typography>
 															</CardContent>
 															<CardContent>
-																<Typography variant="h6" component="h6">
+																<Typography variant="h5" component="h5">
 																	{item.scores[0].scoreType} Score:{' '}
 																	{item.scores[0].percentile}%
 																</Typography>

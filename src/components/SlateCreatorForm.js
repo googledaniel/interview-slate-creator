@@ -17,7 +17,9 @@ const useStyles = makeStyles(theme => ({
 	root: {
 		flexGrow: 1,
 		flexWrap: 'wrap',
-		width: '850px'
+		width: '100%',
+		maxWidth: '900px',
+		margin: 'auto'
 	},
 	paper: {
 		padding: theme.spacing(2),
@@ -31,6 +33,15 @@ const useStyles = makeStyles(theme => ({
 	},
 	margin: {
 		height: theme.spacing(3)
+	},
+	cardContainer: {
+		display: 'flex',
+		flexDirection: 'column',
+		flex: 1,
+		width: '100%',
+		'& > * + *': {
+			marginTop: '20px'
+		}
 	}
 }));
 
@@ -122,8 +133,8 @@ export default function SlateCreatorForm(props) {
 	};
 
 	return (
-		<>
-			<div>
+		<div className={classes.root}>
+			<div className={classes.cardContainer}>
 				{!slate && (
 					<FormControl onSubmit={handleSubmit}>
 						<Card className={classes.root}>
@@ -178,6 +189,6 @@ export default function SlateCreatorForm(props) {
 				)}
 				<div>{slate && <SlateCreator slate={slate} />}</div>
 			</div>
-		</>
+		</div>
 	);
 }

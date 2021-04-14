@@ -207,7 +207,7 @@ const Question = {
 					percentile: null
 				}
 			]
-		},
+		}
 	],
 	culture3: [
 		{
@@ -473,7 +473,7 @@ const Question = {
 					percentile: null
 				}
 			]
-		},
+		}
 	],
 	culture4: [
 		{
@@ -739,7 +739,7 @@ const Question = {
 					percentile: null
 				}
 			]
-		},
+		}
 	],
 	SD5: [
 		{
@@ -781,7 +781,7 @@ const Question = {
 					percentile: null
 				}
 			]
-		},
+		}
 	],
 	culture5: [
 		{
